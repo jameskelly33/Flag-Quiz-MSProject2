@@ -1,2 +1,101 @@
+:root {
+    --primary-background: #e3e7eb;
+    --secondary-background: #2429ae;
+    --button-background:#1e44a4;
+    --incorrect-color:red;
+    --correct-color:green;
+  }
+
+
 body{
-    font-family: 'Rubik', sans-serif;}
+    font-family: 'Rubik', sans-serif;
+    color: #EAEFEF;
+    width: 100%;
+    height: 100%;
+    
+}
+
+#nav-bar{
+    background-color: var(--secondary-background);
+    height: 100px;
+    font-size: 2vh;
+    
+}
+
+
+#easy-btn{
+    background-color:var(--button-background);
+    border-color:var(--button-background);
+    width: 200px;
+    height:100px;
+    padding-top:40px ;
+    padding-bottom: 40px;
+    font-size: 20px;
+}
+#med-btn{
+    background-color:var(--button-background);
+    border-color:var(--button-background);
+    width: 200px;
+    height:100px;
+    padding-top:40px ;
+    padding-bottom: 40px;
+    font-size: 20px;
+    
+}
+#difficult-btn{
+    background-color: var(--button-background);
+    border-color:var(--button-background);
+    width: 200px;
+    height:100px;
+    padding-top:40px ;
+    padding-bottom: 40px;
+    font-size: 20px;
+    
+}
+
+.flag-container{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#option1{
+    background-color: var(--button-background);
+    border-color:var(--button-background);
+    width:35vw;
+    height:15vh;
+    margin:10px;
+    font-size: 2vw;
+   
+}
+
+#option2{
+    background-color: var(--button-background);
+    border-color:var(--button-background);
+    width:35vw;
+    height:15vh;
+    margin:10px;
+    font-size: 2vw;
+    
+   
+
+}
+
+#option3{
+    background-color: var(--button-background);
+    border-color:var(--button-background);
+    width:35vw;
+    height:15vh;
+    margin:10px;
+    font-size: 2vw;
+}
+
+#option4{
+    background-color: var(--button-background);
+    border-color:var(--button-background);
+    width:35vw;
+    height:15vh;
+    margin:10px;
+    font-size: 2vw;
+    
+
+}

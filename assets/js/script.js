@@ -442,3 +442,9 @@ function checkAnswer (event){
   }}
  
 
+function finishGame(){
+  document.getElementById('quiz-container').classList.add('hidden')
+  document.getElementById('scorepage').classList.remove('hidden')
+  document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points.`
+
+}

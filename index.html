@@ -75,9 +75,11 @@
     </div>
 </div>
 
+
+
 <!-- Modal -->
 <div class="modal fade" id="closeQuizWarning" tabindex="-1" aria-labelledby="closeQuizWarning" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog  modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title" id="exampleModalLabel">Are you sure you want to quit?</h3>
@@ -92,6 +94,20 @@
         </div>
       </div>
     </div>
+  </div>
+
+
+  <!------Scorepage-->
+  <div id='scorepage' class ='hidden'>
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col">
+                  <h1 id ='score-heading'> </h1>
+                  <button id='reset-button' data-bs-toggle="modal" data-bs-target="#closeQuizWarning" class = 'btn btn-primary'>Play Again</button>
+              </div>
+          </div>
+      </div>
+
   </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="/assets/js/script.js"></script>

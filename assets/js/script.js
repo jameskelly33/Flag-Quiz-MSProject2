@@ -43,7 +43,7 @@ let countryCodes = {
    "cf": "Central African Republic",
    "cg": "Republic of the Congo",
    "ch": "Switzerland",
-   "ci": "Côte d'Ivoire (Ivory Coast)",
+   "ci": "Côte d’Ivoire",
    "ck": "Cook Islands",
    "cl": "Chile",
    "cm": "Cameroon",
@@ -217,7 +217,7 @@ let countryCodes = {
    "sv": "El Salvador",
    "sx": "Sint Maarten",
    "sy": "Syria",
-   "sz": "Eswatini (Swaziland)",
+   "sz": "eSwatini",
    "tc": "Turks and Caicos Islands",
    "td": "Chad",
    "tf": "French Southern and Antarctic Lands",
@@ -291,7 +291,7 @@ let countryCodes = {
    "us-wy": "Wyoming",
    "uy": "Uruguay",
    "uz": "Uzbekistan",
-   "va": "Vatican City (Holy See)",
+   "va": "Vatican City",
    "vc": "Saint Vincent and the Grenadines",
    "ve": "Venezuela",
    "vg": "British Virgin Islands",
@@ -309,7 +309,9 @@ let countryCodes = {
 }
 let countryStringEasy = 'Albania,Argentina,Australia,Austria,Bangladesh,Belgium,Brazil,Canada,Chile,China,Colombia,Croatia,Cuba,Cyprus,Czechia,Denmark,Egypt,Estonia,Finland,France,Georgia,Germany,Greece,Iceland,India,Iran,Iraq,Ireland,Israel,Italy,Jamaica,Japan,Kenya,Latvia,Lebanon,Malaysia,Mexico,Nepal,Netherlands,New Zealand,Nigeria,North Korea,North Macedonia,Norway,Pakistan,Poland,Portugal,Qatar,Romania,Russia,Saudi Arabia,Slovakia,Slovenia,South Africa,South Korea,Spain,Sri Lanka,Sweden,Switzerland,Turkey,Ukraine,United Kingdom,United States,Uruguay,Vatican City,Vietnam'
 let countryStringMedium = 'Afghanistan,Algeria,Andorra,Angola,Armenia,Bahamas,Bahrain,Barbados,Belarus,Bhutan,Bosnia and Herzegovina,Botswana,Brunei,Bulgaria,Cambodia,Cameroon,Chad,Costa Rica,Côte d’Ivoire,Dominican Republic,Ecuador,eSwatini,Ethiopia,Fiji,Ghana,Honduras,Hungary,Indonesia,Jordan,Kazakhstan,Kosovo,Kuwait,Laos,Liberia,Liechtenstein,Lithuania,Luxembourg,Malta,Moldova,Monaco,Mongolia,Montenegro,Morocco,Niger,Panama,Papua New Guinea,Paraguay,Peru,Philippines,Saint Lucia,San Marino,Senegal,Serbia,Seychelles,Singapore,Somalia,Syria,Taiwan,Thailand,Trinidad and Tobago,Tunisia,Turkmenistan,United Arab Emirates,Uganda,Venezuela,Zimbabwe'
-let countryStringHard ='Antigua and Barbuda,Azerbaijan,Belize,Benin,Bolivia,Burkina Faso,Burundi,Cabo Verde,Cen. African Rep.,Comoros,Dem. Rep. of the Congo,Djibouti,Dominica,El-Salvador,Equatorial Guinea,Eritrea,Gabon,Grenada,Guatemala,Guinea,Guinea Bissau,Guyana,Haiti,Kiribati,Kyrgyzstan,Lesotho,Libya,Madagascar,Malawi,Maldives,Mali,Marshall Islands,Mauritania,Mauritius,Micronesia,Mozambique,Myanmar,Namibia,Nauru,Nicaragua,Oman,Palau,Palestine,Rep. of Congo,Rwanda,Samoa,São Tomé Príncipe,Sierra Leone,Solomon Islands,South Sudan,St Vincent Gren.,St.Kitts & Nevis,Sudan,Suriname,Tajikistan,Tanzania,The Gambia,Timor Leste,Togo,Tonga,Tuvalu,Uzbekistan,Vanuatu,Yemen,Zambia'
+let countryStringHard ='Antigua and Barbuda,Azerbaijan,Belize,Benin,Bolivia,Burkina Faso,Burundi,Cape Verde,Central African Republic,Comoros,DR Congo,Djibouti,Dominica,El Salvador,Equatorial Guinea,Eritrea,Gabon,Grenada,Guatemala,Guinea,Guinea-Bissau,Guyana,Haiti,Kiribati,Kyrgyzstan,Lesotho,Libya,Madagascar,Malawi,Maldives,Mali,Marshall Islands,Mauritania,Mauritius,Micronesia,Mozambique,Myanmar,Namibia,Nauru,Nicaragua,Oman,Palau,Palestine,Republic of the Congo,Rwanda,Samoa,São Tomé and Príncipe,Sierra Leone,Solomon Islands,South Sudan,Saint Vincent and the Grenadines,Saint Kitts and Nevis,Sudan,Suriname,Tajikistan,Tanzania,Gambia,Timor-Leste,Togo,Tonga,Tuvalu,Uzbekistan,Vanuatu,Yemen,Zambia'
+
+
 
 //Turning the three strings into arrays//
 let easyArray = countryStringEasy.split(',')
@@ -317,8 +319,6 @@ let mediumArray = countryStringMedium.split(',')
 let hardArray =countryStringHard.split(',')
 
 //filter countries by difficulty and add country codes//
- 
-
 
 function filterCountries(countryArray){
   let objectToArray = Object.entries(countryCodes);
@@ -387,12 +387,12 @@ document.getElementById('score-count').innerText=`Score ${score}`;
 correctAnswerIndex = Math.floor(Math.random()*questionArray.length);
 //set the correct answer using the index
 correctAnswer= questionArray[correctAnswerIndex]
-//push it to the coorect answer array to avoid dupes and feedback at end of quiz
+//push it to the correct answer array to avoid dupes and feedback at end of quiz
 correctAnswerArray.push(correctAnswer)
 //set correct answer flag
 let answerFlag= getKeyByValue(countryCodes,correctAnswer)
 flag.src = `https://flagcdn.com/w640/${answerFlag}.png`
-//initialise question arry ready for next question
+//initialise question array ready for next question
 questionArray=[]
 button1.addEventListener('click', checkAnswer);
 button2.addEventListener('click', checkAnswer);
@@ -433,4 +433,4 @@ function finishGame(){
   
   location.href = 'resultspage.html'
   document.getElementById('result').innerHTML='Hello'
-}  
+} 

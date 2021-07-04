@@ -327,27 +327,42 @@ function filterCountries(countryArray){
       return Object.fromEntries(filteredArray)
     }
   
-}   
-
+}  
 
  //---------Quiz----------- //
 
+//-----------------Select Difficulty-----------//
+ let gameArray =[]
+
+document.getElementById('medium-btn').addEventListener('click',function getQuiz(){
+  document.getElementById('quiz-container').classList.remove('hidden')
+  document.getElementById('home-container').classList.add('hidden')
+  gameArray = mediumArray
+  generateQuestion()
+})
+document.getElementById('easy-btn').addEventListener('click',function getQuiz(){
+  document.getElementById('quiz-container').classList.remove('hidden')
+  document.getElementById('home-container').classList.add('hidden')
+  gameArray = easyArray
+  generateQuestion()
+})
+document.getElementById('difficult-btn').addEventListener('click',function getQuiz(){
+  document.getElementById('quiz-container').classList.remove('hidden')
+  document.getElementById('home-container').classList.add('hidden')
+  gameArray = hardArray
+  generateQuestion()
+})
+
  //get the key of a value function//
- function getKeyByValue(object, value) {
+function getKeyByValue(object, value) {
    return Object.keys(object).find(key => object[key] === value);
    
  }
-
-
 const flag= document.getElementById('flag')
 const button1 = document.getElementById('option1')
 const button2 = document.getElementById('option2')
 const button3 = document.getElementById('option3')
 const button4 = document.getElementById('option4')
-
-
-
-
 let questionArray =[]
 let correctAnswer 
 let correctAnswerIndex
@@ -355,26 +370,17 @@ let correctAnswerArray=[]
 let questionCount = 1
 let score = 0
 
-
-
-
-
-window.onload = generateQuestion()
-
 function generateQuestion(){ 
-  
+ 
 for (let i =0;i<4;i++){
-  let randomCountry = hardArray[Math.floor(Math.random()*hardArray.length)]
-  if (!questionArray.includes(randomCountry)){
+  let randomCountry = gameArray[Math.floor(Math.random()*gameArray.length)]
+  if (!questionArray.includes(randomCountry) && !correctAnswerArray.includes(randomCountry)){
     questionArray.push(randomCountry)
-    
   }
   else{
     i-=1
    
   }
-
-  
 }
 
 button1.innerText =questionArray[0];
@@ -398,7 +404,7 @@ button1.addEventListener('click', checkAnswer);
 button2.addEventListener('click', checkAnswer);
 button3.addEventListener('click', checkAnswer);
 button4.addEventListener('click', checkAnswer);
-if (questionCount===2){
+if (questionCount===11){
   finishGame()
 }
 
@@ -431,6 +437,6 @@ function checkAnswer (event){
 
 function finishGame(){
   
-  location.href = 'resultspage.html'
-  document.getElementById('result').innerHTML='Hello'
+  location.href ='resultspage.html'
+  document.getElementById('result').innerHTML=score
 } 

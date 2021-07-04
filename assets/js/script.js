@@ -371,6 +371,7 @@ let questionCount = 1
 let score = 0
 
 function generateQuestion(){ 
+  
  
 for (let i =0;i<4;i++){
   let randomCountry = gameArray[Math.floor(Math.random()*gameArray.length)]
@@ -408,13 +409,17 @@ if (questionCount===11){
   finishGame()
 }
 
-
+button1.style.backgroundColor='#1e44a4'
+button2.style.backgroundColor='#1e44a4'
+button3.style.backgroundColor='#1e44a4'
+button4.style.backgroundColor='#1e44a4'
 
 }
 
 
 function checkAnswer (event){
   if (event.target.innerText === correctAnswer){ 
+    event.target.style.backgroundColor = 'green'
     console.log(`Well done!! ${correctAnswer} is correct!`);
     score +=10
     questionCount +=1
@@ -425,6 +430,8 @@ function checkAnswer (event){
     setTimeout(generateQuestion,1000);
   }
   else{
+    event.target.style.backgroundColor='red';
+    document.getElementById(`option${correctAnswerIndex + 1}`).style.backgroundColor='green'
     console.log(`Sorry ${event.target.innerText} is incorrect!`);
     button1.removeEventListener('click', checkAnswer);
     button2.removeEventListener('click', checkAnswer);
@@ -435,4 +442,3 @@ function checkAnswer (event){
   }}
  
 
-document.getElementById('close').addEventListener('click', function(){alert('Do not leave')})

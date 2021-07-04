@@ -435,8 +435,4 @@ function checkAnswer (event){
   }}
  
 
-function finishGame(){
-  
-  location.href ='resultspage.html'
-  document.getElementById('result').innerHTML=score
-} 
+document.getElementById('close').addEventListener('click', function(){alert('Do not leave')})

@@ -5,13 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
     <title>Flag Quiz</title>
 </head>
+
+  
+
 <body>
+    <div id='home-container'>
     <div class="container-fluid text-center">
         <div class="row">
             <div class="col">
@@ -24,16 +28,72 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center">
-                <a id='easy-btn' href="quiz.html" class='btn btn-primary mx-5 my-5'>Easy</a>
-                <a id = 'med-btn' href="quiz.html" class='btn btn-primary mx-5 my-5'>Medium</a>
-                <a id = 'difficult-btn' href="quiz.html" class='btn btn-primary mx-5 my-5'>Difficult</a>
-
-
+                <button id='easy-btn'  class='btn btn-primary mx-5 my-5'>Easy</button>
+                <button id ='medium-btn' class='btn btn-primary mx-5 my-5'>Medium</button>
+                <button id ='difficult-btn' class='btn btn-primary mx-5 my-5'>Difficult</button>
             </div>
         </div>
     </div>
+</div>
+    <div id='quiz-container' class="hidden">
+    <nav id ='nav-bar' class="navbar d-flex justify-content-around">
+        <span id ='question-count' class=''>
+         Question 1/10
+        </span>
+        <span id='score-count' >Score 0</span>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#closeQuizWarning"class="btn-close" aria-label="Close"></button>
+      </nav>
     
+   
+    <div class="container-fluid text-center flag-container">
+        <div class="row">
+            <div class="col-xs-12">
+               <img id = 'flag' src="#" alt=""> 
+            </div>
+        </div>
+    </div>
+
+    <div class="container.fluid text-center">
+        <div class="row">
+            <div class="col-xs-6">
+                <div>
+                    <button id = 'option1' class="btn btn-primary options" type="button">Option1</button>
+                    <button id = 'option2' class="btn btn-primary options" type="button">Option2</button>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="container.fluid text-center">
+        <div class="row">
+            <div class="col-xs-6">
+                <div>
+                    <button id = 'option3' class="btn btn-primary options" type="button">Option3</button>
+                    <button id = 'option4' class="btn btn-primary options" type="button">Option4</button>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="closeQuizWarning" tabindex="-1" aria-labelledby="closeQuizWarning" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Are you sure you want to quit?</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Continue Playing</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="/assets/js/"></script>  
+    <script src="/assets/js/script.js"></script>
 </body>
 </html>

@@ -15,6 +15,21 @@ body{
     
 }
 
+.main-title{
+    color: black;
+}
+
+.sub-title{
+    color:black;
+}
+
+.btn-title{
+    color:black;
+}
+.hidden{
+    display:none;
+}
+
 #nav-bar{
     background-color: var(--secondary-background);
     height: 100px;
@@ -32,7 +47,7 @@ body{
     padding-bottom: 40px;
     font-size: 20px;
 }
-#med-btn{
+#medium-btn{
     background-color:var(--button-background);
     border-color:var(--button-background);
     width: 200px;
@@ -57,7 +72,9 @@ body{
     margin-top: 50px;
     margin-bottom: 50px;
 }
-
+.modal-title{
+    color: black;
+}
 #option1{
     background-color: var(--button-background);
     border-color:var(--button-background);

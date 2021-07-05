@@ -95,6 +95,24 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="closeQuizWarning" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Are you sure you want to quit?</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Continue Playing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
   <!------Scorepage-->
@@ -103,6 +121,8 @@
           <div class="row">
               <div class="col">
                   <h1 id ='score-heading'> </h1>
+                
+                  <button id='save-score-button' data-bs-toggle="modal" data-bs-target="#save-modal" class = 'btn btn-primary'>Save Score</button>
                   <button id='reset-button' data-bs-toggle="modal" data-bs-target="#closeQuizWarning" class = 'btn btn-primary'>Play Again</button>
               </div>
           </div>

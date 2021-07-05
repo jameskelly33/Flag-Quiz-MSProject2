@@ -367,6 +367,7 @@ let questionArray =[]
 let correctAnswer 
 let correctAnswerIndex
 let correctAnswerArray=[]
+let incorrectAnswerArray=[]
 let questionCount = 1
 let score = 0
 
@@ -431,7 +432,9 @@ function checkAnswer (event){
   }
   else{
     event.target.style.backgroundColor='red';
+    
     document.getElementById(`option${correctAnswerIndex + 1}`).style.backgroundColor='green'
+    incorrectAnswerArray.push(document.getElementById(`option${correctAnswerIndex + 1}`).innerText)
     console.log(`Sorry ${event.target.innerText} is incorrect!`);
     button1.removeEventListener('click', checkAnswer);
     button2.removeEventListener('click', checkAnswer);
@@ -445,6 +448,13 @@ function checkAnswer (event){
 function finishGame(){
   document.getElementById('quiz-container').classList.add('hidden')
   document.getElementById('scorepage').classList.remove('hidden')
-  document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points.`
+  document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points. Your mistakes were ${incorrectAnswerArray}`
+
+  
 
 }
+
+
+
+
+

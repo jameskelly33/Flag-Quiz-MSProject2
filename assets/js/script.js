@@ -307,9 +307,9 @@ let countryCodes = {
    "zm": "Zambia",
    "zw": "Zimbabwe"
 }
-let countryStringEasy = 'Albania,Argentina,Australia,Austria,Bangladesh,Belgium,Brazil,Canada,Chile,China,Colombia,Croatia,Cuba,Cyprus,Czechia,Denmark,Egypt,Estonia,Finland,France,Georgia,Germany,Greece,Iceland,India,Iran,Iraq,Ireland,Israel,Italy,Jamaica,Japan,Kenya,Latvia,Lebanon,Malaysia,Mexico,Nepal,Netherlands,New Zealand,Nigeria,North Korea,North Macedonia,Norway,Pakistan,Poland,Portugal,Qatar,Romania,Russia,Saudi Arabia,Slovakia,Slovenia,South Africa,South Korea,Spain,Sri Lanka,Sweden,Switzerland,Turkey,Ukraine,United Kingdom,United States,Uruguay,Vatican City,Vietnam'
-let countryStringMedium = 'Afghanistan,Algeria,Andorra,Angola,Armenia,Bahamas,Bahrain,Barbados,Belarus,Bhutan,Bosnia and Herzegovina,Botswana,Brunei,Bulgaria,Cambodia,Cameroon,Chad,Costa Rica,Côte d’Ivoire,Dominican Republic,Ecuador,eSwatini,Ethiopia,Fiji,Ghana,Honduras,Hungary,Indonesia,Jordan,Kazakhstan,Kosovo,Kuwait,Laos,Liberia,Liechtenstein,Lithuania,Luxembourg,Malta,Moldova,Monaco,Mongolia,Montenegro,Morocco,Niger,Panama,Papua New Guinea,Paraguay,Peru,Philippines,Saint Lucia,San Marino,Senegal,Serbia,Seychelles,Singapore,Somalia,Syria,Taiwan,Thailand,Trinidad and Tobago,Tunisia,Turkmenistan,United Arab Emirates,Uganda,Venezuela,Zimbabwe'
-let countryStringHard ='Antigua and Barbuda,Azerbaijan,Belize,Benin,Bolivia,Burkina Faso,Burundi,Cape Verde,Central African Republic,Comoros,DR Congo,Djibouti,Dominica,El Salvador,Equatorial Guinea,Eritrea,Gabon,Grenada,Guatemala,Guinea,Guinea-Bissau,Guyana,Haiti,Kiribati,Kyrgyzstan,Lesotho,Libya,Madagascar,Malawi,Maldives,Mali,Marshall Islands,Mauritania,Mauritius,Micronesia,Mozambique,Myanmar,Namibia,Nauru,Nicaragua,Oman,Palau,Palestine,Republic of the Congo,Rwanda,Samoa,São Tomé and Príncipe,Sierra Leone,Solomon Islands,South Sudan,Saint Vincent and the Grenadines,Saint Kitts and Nevis,Sudan,Suriname,Tajikistan,Tanzania,Gambia,Timor-Leste,Togo,Tonga,Tuvalu,Uzbekistan,Vanuatu,Yemen,Zambia'
+let countryStringEasy = 'Japan,Canada,United States,United Kingdom,South Korea,Brazil,France,Germany,Israel,China,Switzerland,Australia,Italy,Sweden,Greece,Finland,Spain,Ireland,Jamaica,South Africa,Turkey,India,Norway,New Zealand,Denmark,Argentina,Mexico,Belgium,Poland,Russia,Saudi Arabia,Portugal,Iceland,Croatia,Cyprus,Nepal,Netherlands,North Korea,Ukraine,Nigeria,Kenya,Georgia,Albania,Iraq,Czechia,Austria,Chile,Slovakia,Uruguay,North Macedonia,Estonia,Lebanon,Egypt,Vietnam,Romania,Pakistan,Qatar,Cuba,Vatican City,Iran,Sri Lanka,Slovenia,Bangladesh,Malaysia,Latvia,Colombia'
+let countryStringMedium = 'Panama,Serbia,Morocco,Hungary,Venezuela,Barbados,Thailand,Algeria,Côte d’Ivoire,Syria,Kosovo,Bhutan,Malta,Indonesia,Cambodia,Bosnia and Herzegovina,Fiji,Belarus,Peru,Bulgaria,Honduras,Angola,Tunisia,Ecuador,Monaco,Bahrain,Seychelles,Afghanistan,Singapore,Uganda,Ghana,Trinidad and Tobago,Luxembourg,Liberia,Montenegro,Kazakhstan,Mongolia,Dominican Republic,Philippines,Andorra,Cameroon,Armenia,Bahamas,Somalia,United Arab Emirates,Laos,Moldova,eSwatini,Costa Rica,San Marino,Paraguay,Zimbabwe,Liechtenstein,Papua New Guinea,Jordan,Taiwan,Kuwait,Saint Lucia,Chad,Botswana,Turkmenistan,Ethiopia,Niger,Senegal,Brunei,Lithuania'
+let countryStringHard ='Azerbaijan,Haiti,Tonga,Yemen,Libya,Guatemala,Uzbekistan,Central African Republic,Micronesia,Nicaragua,Togo,El Salvador,Oman,Zambia,Palestine,Lesotho,Kiribati,Palau,Dominica,Mozambique,Kyrgyzstan,Marshall Islands,Sudan,Maldives,Antigua and Barbuda,Belize,Tuvalu,South Sudan,Burundi,Grenada,Madagascar,DR Congo,Myanmar,Malawi,Saint Vincent and the Grenadines,Cape Verde,Guyana,Samoa,Tanzania,Burkina Faso,Bolivia,Mali,Benin,Mauritania,Djibouti,Tajikistan,Sierra Leone,Suriname,Timor-Leste,Gabon,Comoros,Mauritius,Eritrea,Nauru,Rwanda,Vanuatu,Saint Kitts and Nevis,Namibia,Gambia,São Tomé and Príncipe,Republic of the Congo,Guinea,Equatorial Guinea,Solomon Islands,Guinea-Bissau'
 
 
 
@@ -317,6 +317,7 @@ let countryStringHard ='Antigua and Barbuda,Azerbaijan,Belize,Benin,Bolivia,Burk
 let easyArray = countryStringEasy.split(',')
 let mediumArray = countryStringMedium.split(',')
 let hardArray =countryStringHard.split(',')
+
 
 //filter countries by difficulty and add country codes//
 
@@ -333,23 +334,27 @@ function filterCountries(countryArray){
 
 //-----------------Select Difficulty-----------//
  let gameArray =[]
+ let difficultyMultiplier
 
 document.getElementById('medium-btn').addEventListener('click',function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
   gameArray = mediumArray
+  difficultyMultiplier = 2
   generateQuestion()
 })
 document.getElementById('easy-btn').addEventListener('click',function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
   gameArray = easyArray
+  difficultyMultiplier = 1
   generateQuestion()
 })
 document.getElementById('difficult-btn').addEventListener('click',function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
   gameArray = hardArray
+  difficultyMultiplier = 3
   generateQuestion()
 })
 
@@ -358,6 +363,9 @@ function getKeyByValue(object, value) {
    return Object.keys(object).find(key => object[key] === value);
    
  }
+
+
+
 const flag= document.getElementById('flag')
 const button1 = document.getElementById('option1')
 const button2 = document.getElementById('option2')
@@ -399,14 +407,14 @@ correctAnswer= questionArray[correctAnswerIndex]
 correctAnswerArray.push(correctAnswer)
 //set correct answer flag
 let answerFlag= getKeyByValue(countryCodes,correctAnswer)
-flag.src = `https://flagcdn.com/w640/${answerFlag}.png`
+flag.src = `https://flagcdn.com/w320/${answerFlag}.png`
 //initialise question array ready for next question
 questionArray=[]
 button1.addEventListener('click', checkAnswer);
 button2.addEventListener('click', checkAnswer);
 button3.addEventListener('click', checkAnswer);
 button4.addEventListener('click', checkAnswer);
-if (questionCount===11){
+if (questionCount===15){
   finishGame()
 }
 
@@ -422,8 +430,9 @@ function checkAnswer (event){
   if (event.target.innerText === correctAnswer){ 
     event.target.style.backgroundColor = 'green'
     console.log(`Well done!! ${correctAnswer} is correct!`);
-    score +=10
+    let isCorrect = (country)=> country === correctAnswer
     questionCount +=1
+    score += (gameArray.findIndex(isCorrect) +1)*difficultyMultiplier
     button1.removeEventListener('click', checkAnswer);
     button2.removeEventListener('click', checkAnswer);
     button3.removeEventListener('click', checkAnswer);
@@ -449,11 +458,14 @@ function finishGame(){
   document.getElementById('quiz-container').classList.add('hidden')
   document.getElementById('scorepage').classList.remove('hidden')
   document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points. Your mistakes were ${incorrectAnswerArray}`
-
   
-
 }
-
+document.getElementById('save-score-btn').addEventListener('click', function saveScore(){
+  let name = document.getElementById('name').value
+  console.log(name, score)
+  
+  
+})
 
 
 

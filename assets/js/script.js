@@ -332,29 +332,52 @@ function filterCountries(countryArray){
 
  //---------Quiz----------- //
 
-//-----------------Select Difficulty-----------//
+//-----------------Select Difficulty and timer -----------//
  let gameArray =[]
  let difficultyMultiplier
+ let num
+ let timeScore
+
+
+ 
+ function startTimer(num) {
+  let intervalId = setInterval(countDown, 1000);
+
+  function countDown() {
+      document.getElementById('timer').innerHTML=`Time: ${num}`;
+       
+      if (num ===0){
+        finishGame()
+      }else{num = num -= 1}
+      
+  }
+} 
+
+
 
 document.getElementById('medium-btn').addEventListener('click',function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
   gameArray = mediumArray
-  difficultyMultiplier = 2
+  difficultyMultiplier = gameArray.length 
+  startTimer(29)
   generateQuestion()
 })
 document.getElementById('easy-btn').addEventListener('click',function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
   gameArray = easyArray
-  difficultyMultiplier = 1
+  difficultyMultiplier = 0
+  startTimer(29)
+  
   generateQuestion()
 })
 document.getElementById('difficult-btn').addEventListener('click',function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
   gameArray = hardArray
-  difficultyMultiplier = 3
+  difficultyMultiplier = gameArray.length *2 
+ startTimer(29)
   generateQuestion()
 })
 
@@ -378,10 +401,12 @@ let correctAnswerArray=[]
 let incorrectAnswerArray=[]
 let questionCount = 1
 let score = 0
+let correctCount =0
+
+
 
 function generateQuestion(){ 
   
- 
 for (let i =0;i<4;i++){
   let randomCountry = gameArray[Math.floor(Math.random()*gameArray.length)]
   if (!questionArray.includes(randomCountry) && !correctAnswerArray.includes(randomCountry)){
@@ -397,8 +422,9 @@ button1.innerText =questionArray[0];
 button2.innerText =questionArray[1];
 button3.innerText =questionArray[2];
 button4.innerText =questionArray[3];
-document.getElementById('question-count').innerText = `Question ${questionCount}/10`;
+document.getElementById('question-count').innerText = `Question ${questionCount}`;
 document.getElementById('score-count').innerText=`Score ${score}`;
+
 //set correct answer index to pick a correct answer
 correctAnswerIndex = Math.floor(Math.random()*questionArray.length);
 //set the correct answer using the index
@@ -414,9 +440,7 @@ button1.addEventListener('click', checkAnswer);
 button2.addEventListener('click', checkAnswer);
 button3.addEventListener('click', checkAnswer);
 button4.addEventListener('click', checkAnswer);
-if (questionCount===15){
-  finishGame()
-}
+
 
 button1.style.backgroundColor='#1e44a4'
 button2.style.backgroundColor='#1e44a4'
@@ -432,7 +456,9 @@ function checkAnswer (event){
     console.log(`Well done!! ${correctAnswer} is correct!`);
     let isCorrect = (country)=> country === correctAnswer
     questionCount +=1
-    score += (gameArray.findIndex(isCorrect) +1)*difficultyMultiplier
+    correctCount +=1
+    score += (gameArray.findIndex(isCorrect) +1)+difficultyMultiplier
+    console.log(letcheckscore = (gameArray.findIndex(isCorrect) +1)+difficultyMultiplier)
     button1.removeEventListener('click', checkAnswer);
     button2.removeEventListener('click', checkAnswer);
     button3.removeEventListener('click', checkAnswer);
@@ -457,7 +483,7 @@ function checkAnswer (event){
 function finishGame(){
   document.getElementById('quiz-container').classList.add('hidden')
   document.getElementById('scorepage').classList.remove('hidden')
-  document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points. Your mistakes were ${incorrectAnswerArray}`
+  document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points. You answered ${correctCount} out of ${questionCount}. Your mistakes were ${incorrectAnswerArray}`
   
 }
 document.getElementById('save-score-btn').addEventListener('click', function saveScore(){

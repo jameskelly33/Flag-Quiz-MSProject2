@@ -340,16 +340,14 @@ function filterCountries(countryArray){
 //-----------------Timer -----------//
 
  let seconds
- function startTimer(num) {
+ function startTimer(seconds) {
   let intervalId = setInterval(countDown, 1000);
 
   function countDown() {
       document.getElementById('timer').innerHTML=`Time: ${seconds}`;
-       
       if (seconds ===0){
         finishGame()
       }else{seconds = seconds -= 1}
-      
   }
 } 
 

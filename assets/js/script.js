@@ -317,8 +317,13 @@ let countryStringHard ='Azerbaijan,Haiti,Tonga,Yemen,Libya,Guatemala,Uzbekistan,
 let easyArray = countryStringEasy.split(',')
 let mediumArray = countryStringMedium.split(',')
 let hardArray =countryStringHard.split(',')
-
-
+//Setting the flag size for different devices//
+let flagWidth
+let intViewportWidth = window.innerWidth;
+if(intViewportWidth <350){
+  flagWidth =160
+} else if(intViewportWidth<900){flagWidth=320}
+else{flagWidth =640}
 //filter countries by difficulty and add country codes//
 
 function filterCountries(countryArray){
@@ -330,32 +335,28 @@ function filterCountries(countryArray){
   
 }  
 
- //---------Quiz----------- //
+ //---------------------------------Quiz-------------------------------------- //
 
-//-----------------Select Difficulty and timer -----------//
- let gameArray =[]
- let difficultyMultiplier
- let num
- let timeScore
+//-----------------Timer -----------//
 
-
- 
+ let seconds
  function startTimer(num) {
   let intervalId = setInterval(countDown, 1000);
 
   function countDown() {
-      document.getElementById('timer').innerHTML=`Time: ${num}`;
+      document.getElementById('timer').innerHTML=`Time: ${seconds}`;
        
-      if (num ===0){
+      if (seconds ===0){
         finishGame()
-      }else{num = num -= 1}
+      }else{seconds = seconds -= 1}
       
   }
 } 
 
-
-
-document.getElementById('medium-btn').addEventListener('click',function getQuiz(){
+//--------Select Difficulty----------??
+let gameArray =[]
+let difficultyMultiplier
+  document.getElementById('medium-btn').addEventListener('click',function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
   gameArray = mediumArray
@@ -386,9 +387,6 @@ function getKeyByValue(object, value) {
    return Object.keys(object).find(key => object[key] === value);
    
  }
-
-
-
 const flag= document.getElementById('flag')
 const button1 = document.getElementById('option1')
 const button2 = document.getElementById('option2')
@@ -402,8 +400,6 @@ let incorrectAnswerArray=[]
 let questionCount = 1
 let score = 0
 let correctCount =0
-
-
 
 function generateQuestion(){ 
   
@@ -433,7 +429,7 @@ correctAnswer= questionArray[correctAnswerIndex]
 correctAnswerArray.push(correctAnswer)
 //set correct answer flag
 let answerFlag= getKeyByValue(countryCodes,correctAnswer)
-flag.src = `https://flagcdn.com/w320/${answerFlag}.png`
+flag.src = `https://flagcdn.com/w${flagWidth}/${answerFlag}.png`
 //initialise question array ready for next question
 questionArray=[]
 button1.addEventListener('click', checkAnswer);
@@ -442,17 +438,22 @@ button3.addEventListener('click', checkAnswer);
 button4.addEventListener('click', checkAnswer);
 
 
-button1.style.backgroundColor='#1e44a4'
-button2.style.backgroundColor='#1e44a4'
-button3.style.backgroundColor='#1e44a4'
-button4.style.backgroundColor='#1e44a4'
+let backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--button-background')
+button1.style.backgroundColor= backgroundColor
+button2.style.backgroundColor= backgroundColor
+button3.style.backgroundColor = backgroundColor
+button4.style.backgroundColor = backgroundColor
+
 
 }
 
 
 function checkAnswer (event){
+
+  const correctColor = getComputedStyle(document.documentElement).getPropertyValue('--correct-color')
+  const incorrectColor = getComputedStyle(document.documentElement).getPropertyValue('--incorrect-color')
   if (event.target.innerText === correctAnswer){ 
-    event.target.style.backgroundColor = 'green'
+    event.target.style.backgroundColor = correctColor
     console.log(`Well done!! ${correctAnswer} is correct!`);
     let isCorrect = (country)=> country === correctAnswer
     questionCount +=1
@@ -466,9 +467,8 @@ function checkAnswer (event){
     setTimeout(generateQuestion,1000);
   }
   else{
-    event.target.style.backgroundColor='red';
-    
-    document.getElementById(`option${correctAnswerIndex + 1}`).style.backgroundColor='green'
+    event.target.style.backgroundColor= incorrectColor
+    document.getElementById(`option${correctAnswerIndex + 1}`).style.backgroundColor=correctColor
     incorrectAnswerArray.push(document.getElementById(`option${correctAnswerIndex + 1}`).innerText)
     console.log(`Sorry ${event.target.innerText} is incorrect!`);
     button1.removeEventListener('click', checkAnswer);
@@ -486,12 +486,6 @@ function finishGame(){
   document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points. You answered ${correctCount} out of ${questionCount}. Your mistakes were ${incorrectAnswerArray}`
   
 }
-document.getElementById('save-score-btn').addEventListener('click', function saveScore(){
-  let name = document.getElementById('name').value
-  console.log(name, score)
-  
-  
-})
 
 
 

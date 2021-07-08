@@ -1,122 +1,209 @@
 :root {
-    --primary-background: #e3e7eb;
+    --primary-background: #7692AE;
     --secondary-background: #2429ae;
-    --button-background:#1e44a4;
+    --button-background:#43A9E8;
     --incorrect-color:red;
     --correct-color:green;
+    --font-color:black;
   }
-
-
 body{
     font-family: 'Rubik', sans-serif;
-    color: #EAEFEF;
+    color: var(--font-color);
     width: 100%;
     height: 100%;
-    
+    background-color: var(--primary-background); 
+
 }
 
 .main-title{
-    color: black;
+    color:var(--font-color);
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size: 42px;
 }
-
 .sub-title{
-    color:black;
+    color:var(--font-color);
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-bottom: 5vh;
+    font-size: 28px;
+    font-style: italic;
 }
-
 .btn-title{
-    color:black;
+    color:var(--font-color);
+    letter-spacing: 1px;
+    font-weight: bold;;
 }
 .hidden{
     display:none;
 }
-
-#nav-bar{
-    background-color: var(--secondary-background);
-    height: 100px;
-    font-size: 2vh;
-    
+.button-container{
+    margin-top: 20px;
 }
-
 
 #easy-btn{
     background-color:var(--button-background);
-    border-color:var(--button-background);
-    width: 200px;
-    height:100px;
-    padding-top:40px ;
-    padding-bottom: 40px;
+    border-color:var(--secondary-background);
+    width: 300px;
+    height:150px;
     font-size: 20px;
+    margin:20px;
+    color: var(--font-color);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
 }
 #medium-btn{
     background-color:var(--button-background);
-    border-color:var(--button-background);
-    width: 200px;
-    height:100px;
-    padding-top:40px ;
-    padding-bottom: 40px;
+    border-color:var(--secondary-background);
+    width: 300px;
+    height:150px;
     font-size: 20px;
-    
+    margin:20px;
+    color: var(--font-color); 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #difficult-btn{
     background-color: var(--button-background);
-    border-color:var(--button-background);
-    width: 200px;
-    height:100px;
-    padding-top:40px ;
-    padding-bottom: 40px;
+    border-color:var(--secondary-background);
+    width: 300px;
+    height:150px;
     font-size: 20px;
-    
+    margin:20px;
+    color: var(--font-color); 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+#nav-bar{
+    background-color: var(--primary-background);
+    height: 5vh;
+}
 .flag-container{
-    margin-top: 50px;
+    margin-top: 25px;
     margin-bottom: 50px;
 }
 .modal-title{
-    color: black;
+    color: var(--font-color);
 }
 #option1{
     background-color: var(--button-background);
     border-color:var(--button-background);
-    width:35vw;
-    height:15vh;
+    color: var(--font-color);
+    width:40vw;
+    height:20vh;
     margin:10px;
-    font-size: 2vw;
-   
+    
 }
-
 #option2{
     background-color: var(--button-background);
     border-color:var(--button-background);
-    width:35vw;
-    height:15vh;
+    color: var(--font-color);
+    width:40vw;
+    height:20vh;
     margin:10px;
-    font-size: 2vw;
-    
-   
-
+    ;
 }
-
 #option3{
     background-color: var(--button-background);
     border-color:var(--button-background);
-    width:35vw;
-    height:15vh;
+    color: var(--font-color);
+    width:40vw;
+    height:20vh;
     margin:10px;
-    font-size: 2vw;
+    
 }
-
 #option4{
     background-color: var(--button-background);
     border-color:var(--button-background);
-    width:35vw;
-    height:15vh;
+    color: var(--font-color);
+    width:40vw;
+    height:20vh;
     margin:10px;
-    font-size: 2vw;
     
-
 }
 
-#scorepage{
-    color:black;
+
+.modal-title{
+    color: var(--secondary-background)
+}
+
+@media  screen and (min-width :320px) {
+    
+    #easy-btn{
+        width: 200px;
+        height:100px;
+    }
+    #medium-btn{
+        width: 200px;
+        height:100px;
+    }
+    #difficult-btn{
+        width: 200px;
+        height:100px;
+    }
+
+    .button-container{
+        margin-top: 50px;
+    }
+}
+
+@media  screen and (min-width :768px) {
+    
+
+    .main-title{
+        font-size: 72px;
+    }
+
+    .sub-title{
+        font-size: 42px;
+    }
+    
+    #easy-btn{
+        width: 300px;
+        height:150px;
+        font-size: 28px;
+        margin:100px;
+    }
+    #medium-btn{
+        width: 300px;
+        height:150px;
+        font-size: 28px;
+        margin:100px;
+    }
+    #difficult-btn{
+        width: 300px;
+        height:150px;
+        font-size: 28px;
+        margin:100px;
+    }
+
+    .button-container{
+        margin-top: 100px;
+    }
+
+    #nav-bar{
+        font-size: 2vh;
+    }
+
+    #option1{
+        font-size: 3.5vh;
+        width: 45vw;
+    }
+    #option2{
+        font-size: 3.5vh;
+        width: 45vw;
+    }
+    #option3{
+    font-size: 3.5vh;
+    width: 45vw;
+}
+    
+    #option4{
+        font-size: 3.5vh;
+        width:45vw;
+        }
+
+    
 }

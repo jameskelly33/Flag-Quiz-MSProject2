@@ -1,10 +1,10 @@
 :root {
-    --primary-background: #7692AE;
-    --secondary-background: #2429ae;
-    --button-background:#43A9E8;
+    --primary-background: #3F91A9;
+    --secondary-background: #7592D0;
+    --button-background:#83A7CF;
     --incorrect-color:red;
     --correct-color:green;
-    --font-color:black;
+    --font-color:#F2F4EF;
   }
 body{
     font-family: 'Rubik', sans-serif;

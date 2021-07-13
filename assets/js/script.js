@@ -1,5 +1,5 @@
 //--------------Country Names and Codes--------------------- //
-let countryCodes = {
+const countryCodes = {
    "ad": "Andorra",
    "ae": "United Arab Emirates",
    "af": "Afghanistan",
@@ -314,9 +314,9 @@ let countryStringHard ='Azerbaijan,Haiti,Tonga,Yemen,Libya,Guatemala,Uzbekistan,
 
 
 //Turning the three strings into arrays//
-let easyArray = countryStringEasy.split(',')
-let mediumArray = countryStringMedium.split(',')
-let hardArray =countryStringHard.split(',')
+const easyArray = countryStringEasy.split(',')
+const mediumArray = countryStringMedium.split(',')
+const hardArray =countryStringHard.split(',')
 //Setting the flag size for different devices//
 let flagWidth
 let intViewportWidth = window.innerWidth;
@@ -324,16 +324,8 @@ if(intViewportWidth <350){
   flagWidth =160
 } else if(intViewportWidth<900){flagWidth=320}
 else{flagWidth =640}
-//filter countries by difficulty and add country codes//
 
-function filterCountries(countryArray){
-  let objectToArray = Object.entries(countryCodes);
-    for (x of countryArray){
-      let filteredArray = objectToArray.filter(([key,value]) =>countryArray.includes(value));
-      return Object.fromEntries(filteredArray)
-    }
-  
-}  
+
 
  //---------------------------------Quiz-------------------------------------- //
 
@@ -346,6 +338,8 @@ function filterCountries(countryArray){
   function countDown() {
       document.getElementById('timer').innerHTML=`Time: ${seconds}`;
       if (seconds ===0){
+        console.log('Times Up')
+        clearInterval(intervalId)
         finishGame()
       }else{seconds = seconds -= 1}
   }
@@ -359,7 +353,7 @@ let difficultyMultiplier
   document.getElementById('home-container').classList.add('hidden')
   gameArray = mediumArray
   difficultyMultiplier = gameArray.length 
-  startTimer(29)
+  startTimer(5)
   generateQuestion()
 })
 document.getElementById('easy-btn').addEventListener('click',function getQuiz(){
@@ -400,7 +394,6 @@ let score = 0
 let correctCount =0
 
 function generateQuestion(){ 
-  
 for (let i =0;i<4;i++){
   let randomCountry = gameArray[Math.floor(Math.random()*gameArray.length)]
   if (!questionArray.includes(randomCountry) && !correctAnswerArray.includes(randomCountry)){
@@ -408,17 +401,14 @@ for (let i =0;i<4;i++){
   }
   else{
     i-=1
-   
   }
 }
-
 button1.innerText =questionArray[0];
 button2.innerText =questionArray[1];
 button3.innerText =questionArray[2];
 button4.innerText =questionArray[3];
 document.getElementById('question-count').innerText = `Question ${questionCount}`;
 document.getElementById('score-count').innerText=`Score ${score}`;
-
 //set correct answer index to pick a correct answer
 correctAnswerIndex = Math.floor(Math.random()*questionArray.length);
 //set the correct answer using the index
@@ -434,30 +424,24 @@ button1.addEventListener('click', checkAnswer);
 button2.addEventListener('click', checkAnswer);
 button3.addEventListener('click', checkAnswer);
 button4.addEventListener('click', checkAnswer);
-
-
 let backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--button-background')
 button1.style.backgroundColor= backgroundColor
 button2.style.backgroundColor= backgroundColor
 button3.style.backgroundColor = backgroundColor
 button4.style.backgroundColor = backgroundColor
-
-
 }
 
 
 function checkAnswer (event){
-
   const correctColor = getComputedStyle(document.documentElement).getPropertyValue('--correct-color')
   const incorrectColor = getComputedStyle(document.documentElement).getPropertyValue('--incorrect-color')
   if (event.target.innerText === correctAnswer){ 
     event.target.style.backgroundColor = correctColor
-    console.log(`Well done!! ${correctAnswer} is correct!`);
+    //console.log(`Well done!! ${correctAnswer} is correct!`);
     let isCorrect = (country)=> country === correctAnswer
     questionCount +=1
     correctCount +=1
     score += (gameArray.findIndex(isCorrect) +1)+difficultyMultiplier
-    console.log(letcheckscore = (gameArray.findIndex(isCorrect) +1)+difficultyMultiplier)
     button1.removeEventListener('click', checkAnswer);
     button2.removeEventListener('click', checkAnswer);
     button3.removeEventListener('click', checkAnswer);
@@ -468,7 +452,7 @@ function checkAnswer (event){
     event.target.style.backgroundColor= incorrectColor
     document.getElementById(`option${correctAnswerIndex + 1}`).style.backgroundColor=correctColor
     incorrectAnswerArray.push(document.getElementById(`option${correctAnswerIndex + 1}`).innerText)
-    console.log(`Sorry ${event.target.innerText} is incorrect!`);
+    //console.log(`Sorry ${event.target.innerText} is incorrect!`);
     button1.removeEventListener('click', checkAnswer);
     button2.removeEventListener('click', checkAnswer);
     button3.removeEventListener('click', checkAnswer);
@@ -476,15 +460,35 @@ function checkAnswer (event){
     questionCount +=1
     setTimeout(generateQuestion,1000);
   }}
- 
 
 function finishGame(){
   document.getElementById('quiz-container').classList.add('hidden')
   document.getElementById('scorepage').classList.remove('hidden')
-  document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points. You answered ${correctCount} out of ${questionCount}. Your mistakes were ${incorrectAnswerArray}`
+  document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points.`
+  if (incorrectAnswerArray.length>=1){
+  showMistakes()}
   
 }
 
+const mistakeFlags = document.getElementById('mistakes')
+function showMistakes(){
+  
+  mistakeFlags.classList.remove('hidden')
+  for (x of incorrectAnswerArray){
+    let errorFlagFigure = document.createElement('figure')
+    errorFlagFigure.setAttribute('class', 'figure')
+    mistakeFlags.appendChild(errorFlagFigure)
+    let errorFlag = document.createElement('img')
+    errorFlag.src= `https://flagcdn.com/h80/${getKeyByValue(countryCodes,x)}.png`
+    errorFlag.setAttribute('class', 'px-5 figure-img img-fluid')
+    let flagCaption = document.createElement('figcaption')
+    flagCaption.setAttribute('class', 'figure-caption text-center') 
+    let captionText = document.createTextNode(x)
+    flagCaption.appendChild(captionText)
+    errorFlagFigure.appendChild(errorFlag)
+    errorFlag.parentNode.insertBefore(flagCaption,errorFlag.nextSibling)
+  } 
+}
 
 
 

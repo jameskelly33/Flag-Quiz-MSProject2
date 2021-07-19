@@ -323,7 +323,6 @@ if(intViewportWidth <smallScreen){
   flagWidth =160
 } else if(intViewportWidth<medScren){flagWidth=320}
 else{flagWidth =640}
-console.log(intViewportWidth)
  //---------------------------------Quiz-------------------------------------- //
 //-----------------Timer -----------//
  let seconds
@@ -340,48 +339,44 @@ console.log(intViewportWidth)
         {seconds = seconds -= 1}
       }
       else {seconds = seconds -= 1}
-      
   }
 } 
 //--------Select Difficulty----------??
 let gameArray =[]
 let difficultyMultiplier
-  document.getElementById('medium-btn').addEventListener('click',function getQuiz(){
-  document.getElementById('quiz-container').classList.remove('hidden')
-  document.getElementById('home-container').classList.add('hidden')
-  gameArray = mediumArray
-  difficultyMultiplier = gameArray.length 
-  startTimer(12)
-  generateQuestion()
+document.getElementById('easy-btn').addEventListener('click',function(){
+  gameArray=easyArray
+  difficultyMultiplier=0
+  getQuiz()
 })
-document.getElementById('easy-btn').addEventListener('click',function getQuiz(){
-  document.getElementById('quiz-container').classList.remove('hidden')
-  document.getElementById('home-container').classList.add('hidden')
-  gameArray = easyArray
-  difficultyMultiplier = 0
-  startTimer(29)
-  
-  generateQuestion()
+document.getElementById('medium-btn').addEventListener('click',function (){
+  gameArray=mediumArray
+  difficultyMultiplier = gameArray.length
+  getQuiz()
 })
-document.getElementById('difficult-btn').addEventListener('click',function getQuiz(){
-  document.getElementById('quiz-container').classList.remove('hidden')
-  document.getElementById('home-container').classList.add('hidden')
-  gameArray = hardArray
+document.getElementById('difficult-btn').addEventListener('click',function (){
+  gameArray=hardArray
   difficultyMultiplier = gameArray.length *2 
- startTimer(29)
-  generateQuestion()
+  getQuiz()
 })
 
+//--------START GAME------------//
+function getQuiz(){
+  document.getElementById('quiz-container').classList.remove('hidden')
+  document.getElementById('home-container').classList.add('hidden')
+  startTimer(12)
+  generateQuestion() 
+}
  //get the key of a value function//
 function getKeyByValue(object, value) {
    return Object.keys(object).find(key => object[key] === value);
-   
  }
 const flag= document.getElementById('flag')
 const button1 = document.getElementById('option1')
 const button2 = document.getElementById('option2')
 const button3 = document.getElementById('option3')
 const button4 = document.getElementById('option4')
+const answerButtonArray= [button1,button2,button3,button4]
 let questionArray =[]
 let correctAnswer 
 let correctAnswerIndex
@@ -392,44 +387,41 @@ let score = 0
 let correctCount =0
 
 function generateQuestion(){ 
-for (let i =0;i<4;i++){
-  let randomCountry = gameArray[Math.floor(Math.random()*gameArray.length)]
-  if (!questionArray.includes(randomCountry) && !correctAnswerArray.includes(randomCountry)){
-    questionArray.push(randomCountry)
+  for (let i =0;i<4;i++){
+    let randomCountry = gameArray[Math.floor(Math.random()*gameArray.length)]
+    if (!questionArray.includes(randomCountry) && !correctAnswerArray.includes(randomCountry)){
+      questionArray.push(randomCountry)
+    }
+    else{
+      i-=1
+    }
   }
-  else{
-    i-=1
+  let questionArrayIndex = 0
+  for (answerButton of answerButtonArray){
+    answerButton.innerText=questionArray[questionArrayIndex]
+    questionArrayIndex++
+  }
+  document.getElementById('question-count').innerText = `Question ${questionCount}`;
+  document.getElementById('score-count').innerText=`Score ${score}`;
+  //set correct answer index to pick a correct answer
+  correctAnswerIndex = Math.floor(Math.random()*questionArray.length);
+  //set the correct answer using the index
+  correctAnswer= questionArray[correctAnswerIndex]
+  //push it to the correct answer array to avoid dupes and feedback at end of quiz
+  correctAnswerArray.push(correctAnswer)
+  //set correct answer flag
+  let answerFlag= getKeyByValue(countryCodes,correctAnswer)
+  flag.src = `https://flagcdn.com/w${flagWidth}/${answerFlag}.png`
+  //initialise question array ready for next question
+  questionArray=[]
+  for (answerButton of answerButtonArray){
+    answerButton.addEventListener('click', checkAnswer)
+  }
+  let backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--button-background')
+  for (answerButton of answerButtonArray){
+    answerButton.style.backgroundColor= backgroundColor
   }
 }
-button1.innerText =questionArray[0];
-button2.innerText =questionArray[1];
-button3.innerText =questionArray[2];
-button4.innerText =questionArray[3];
-document.getElementById('question-count').innerText = `Question ${questionCount}`;
-document.getElementById('score-count').innerText=`Score ${score}`;
-//set correct answer index to pick a correct answer
-correctAnswerIndex = Math.floor(Math.random()*questionArray.length);
-//set the correct answer using the index
-correctAnswer= questionArray[correctAnswerIndex]
-//push it to the correct answer array to avoid dupes and feedback at end of quiz
-correctAnswerArray.push(correctAnswer)
-//set correct answer flag
-let answerFlag= getKeyByValue(countryCodes,correctAnswer)
-flag.src = `https://flagcdn.com/w${flagWidth}/${answerFlag}.png`
-//initialise question array ready for next question
-questionArray=[]
-button1.addEventListener('click', checkAnswer);
-button2.addEventListener('click', checkAnswer);
-button3.addEventListener('click', checkAnswer);
-button4.addEventListener('click', checkAnswer);
-let backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--button-background')
-button1.style.backgroundColor= backgroundColor
-button2.style.backgroundColor= backgroundColor
-button3.style.backgroundColor = backgroundColor
-button4.style.backgroundColor = backgroundColor
-}
-
-
 function checkAnswer (event){
   const correctColor = getComputedStyle(document.documentElement).getPropertyValue('--correct-color')
   const incorrectColor = getComputedStyle(document.documentElement).getPropertyValue('--incorrect-color')
@@ -439,37 +431,29 @@ function checkAnswer (event){
     questionCount +=1
     correctCount +=1
     score += (gameArray.findIndex(isCorrect) +1)+difficultyMultiplier
-    button1.removeEventListener('click', checkAnswer);
-    button2.removeEventListener('click', checkAnswer);
-    button3.removeEventListener('click', checkAnswer);
-    button4.removeEventListener('click', checkAnswer);
+    for (answerButton of answerButtonArray){
+        answerButton.removeEventListener('click', checkAnswer)}
     setTimeout(generateQuestion,1000);
   }
   else{
     event.target.style.backgroundColor= incorrectColor
     document.getElementById(`option${correctAnswerIndex + 1}`).style.backgroundColor=correctColor
     incorrectAnswerArray.push(document.getElementById(`option${correctAnswerIndex + 1}`).innerText) 
-    button1.removeEventListener('click', checkAnswer);
-    button2.removeEventListener('click', checkAnswer);
-    button3.removeEventListener('click', checkAnswer);
-    button4.removeEventListener('click', checkAnswer);
+    for (answerButton of answerButtonArray){
+      answerButton.removeEventListener('click', checkAnswer)}
     questionCount +=1
     setTimeout(generateQuestion,1000);
   }}
-
 function finishGame(){
   document.getElementById('quiz-container').classList.add('hidden')
   document.getElementById('scorepage').classList.remove('hidden')
   document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points.`
   if (incorrectAnswerArray.length>=1){
   showMistakes()}
-  
-  
-}
 
+}
 const mistakeFlags = document.getElementById('mistakes')
 function showMistakes(){
-  
   mistakeFlags.classList.remove('hidden')
   for (x of incorrectAnswerArray){
     let errorFlagFigure = document.createElement('figure')

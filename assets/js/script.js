@@ -326,6 +326,7 @@ if(intViewportWidth <350){
 else{flagWidth =640}
 
 
+//console.log(Object.entries(localStorage))
 
  //---------------------------------Quiz-------------------------------------- //
 
@@ -338,7 +339,6 @@ else{flagWidth =640}
   function countDown() {
       document.getElementById('timer').innerHTML=`Time: ${seconds}`;
       if (seconds ===0){
-        console.log('Times Up')
         clearInterval(intervalId)
         finishGame()
       }else{seconds = seconds -= 1}
@@ -437,7 +437,6 @@ function checkAnswer (event){
   const incorrectColor = getComputedStyle(document.documentElement).getPropertyValue('--incorrect-color')
   if (event.target.innerText === correctAnswer){ 
     event.target.style.backgroundColor = correctColor
-    //console.log(`Well done!! ${correctAnswer} is correct!`);
     let isCorrect = (country)=> country === correctAnswer
     questionCount +=1
     correctCount +=1
@@ -451,8 +450,7 @@ function checkAnswer (event){
   else{
     event.target.style.backgroundColor= incorrectColor
     document.getElementById(`option${correctAnswerIndex + 1}`).style.backgroundColor=correctColor
-    incorrectAnswerArray.push(document.getElementById(`option${correctAnswerIndex + 1}`).innerText)
-    //console.log(`Sorry ${event.target.innerText} is incorrect!`);
+    incorrectAnswerArray.push(document.getElementById(`option${correctAnswerIndex + 1}`).innerText) 
     button1.removeEventListener('click', checkAnswer);
     button2.removeEventListener('click', checkAnswer);
     button3.removeEventListener('click', checkAnswer);
@@ -467,6 +465,7 @@ function finishGame(){
   document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points.`
   if (incorrectAnswerArray.length>=1){
   showMistakes()}
+  
   
 }
 
@@ -489,6 +488,58 @@ function showMistakes(){
     errorFlag.parentNode.insertBefore(flagCaption,errorFlag.nextSibling)
   } 
 }
+
+let sortedHighScores={}
+function addName(){
+  document.getElementById('scoreboard').classList.remove('hidden')
+  let userName = document.getElementById('nameInput').value 
+  const highScorePresent =  (window.localStorage.getItem('highScores'))
+  let user ={[userName]:score}
+  if (highScorePresent===null){
+    let user ={[userName]:score}
+    window.localStorage.setItem('highScores',JSON.stringify(user))
+    sortedHighScores=user
+  }
+  else{
+    let highScoreObject = JSON.parse(window.localStorage.getItem('highScores'))
+    highScoreObject[userName] = score
+    sortedHighScores =sortObject(highScoreObject)
+    window.localStorage.removeItem('highScores')
+    window.localStorage.setItem('highScores', JSON.stringify(sortedHighScores))
+    updateScoreboard(sortedHighScores)
+  }
+ 
+}
+
+document.getElementById('submitName').addEventListener('click',addName)
+
+
+function sortObject(object){
+  return Object.fromEntries(
+    Object.entries(object).sort(([,a],[,b]) => b-a))
+}
+
+function updateScoreboard (userScores){   
+  let rowCount=1
+  for (x of Object.values(userScores)){
+    const tableBody = document.getElementById('table-body')
+    const tableRow = document.createElement('tr')
+    const tableData1 = document.createElement('td')
+    const tableData2 = document.createElement('td')
+    const tableData3 = document.createElement('td')
+    tableBody.appendChild(tableRow)
+    tableRow.appendChild(tableData1).innerText=`${rowCount}`
+    tableRow.appendChild(tableData2).innerText= `${getKeyByValue(userScores,x)}`
+    tableRow.appendChild(tableData3).innerText=`${x}`
+    rowCount+=1
+  }
+  }
+
+
+
+
+
+
 
 
 

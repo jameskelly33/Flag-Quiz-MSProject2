@@ -12,7 +12,6 @@ body{
     width: 100%;
     height: 100%;
     background-color: var(--primary-background); 
-
 }
 
 .main-title{
@@ -43,7 +42,7 @@ body{
     margin-top: 20px;
 }
 
-#easy-btn{
+.difficulty-buttons{
     background-color:var(--button-background);
     border-color:var(--secondary-background);
     width: 300px;
@@ -52,29 +51,7 @@ body{
     margin:20px;
     color: var(--font-color);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
 }
-#medium-btn{
-    background-color:var(--button-background);
-    border-color:var(--secondary-background);
-    width: 300px;
-    height:150px;
-    font-size: 20px;
-    margin:20px;
-    color: var(--font-color); 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-#difficult-btn{
-    background-color: var(--button-background);
-    border-color:var(--secondary-background);
-    width: 300px;
-    height:150px;
-    font-size: 20px;
-    margin:20px;
-    color: var(--font-color); 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 
 #nav-bar{
     background-color: var(--primary-background);
@@ -87,44 +64,16 @@ body{
 .modal-title{
     color: var(--font-color);
 }
-#option1{
+.answer-button{
     background-color: var(--button-background);
     border-color:var(--button-background);
     color: var(--font-color);
     width:40vw;
     height:20vh;
     margin:10px;
-    
-}
-#option2{
-    background-color: var(--button-background);
-    border-color:var(--button-background);
-    color: var(--font-color);
-    width:40vw;
-    height:20vh;
-    margin:10px;
-    ;
-}
-#option3{
-    background-color: var(--button-background);
-    border-color:var(--button-background);
-    color: var(--font-color);
-    width:40vw;
-    height:20vh;
-    margin:10px;
-    
-}
-#option4{
-    background-color: var(--button-background);
-    border-color:var(--button-background);
-    color: var(--font-color);
-    width:40vw;
-    height:20vh;
-    margin:10px;
-    
 }
 .flashing {
-    animation: blinker 1s linear infinite;
+    animation: blinker 1.5s linear infinite;
   }
   
   @keyframes blinker {
@@ -132,35 +81,26 @@ body{
       opacity: 0;
     }
   }
-
+.flash-once{
+    animation: blinker 1s linear 0.5s 1;
+    color:green;
+    @keyframes blinker {
+        50% {
+          opacity: 0;
+        }}
+        
+}
 .modal-title{
     color: var(--secondary-background)
 }
-
 @media  screen and (min-width :320px) {
-    
-    #easy-btn{
-        width: 200px;
-        height:100px;
-    }
-    #medium-btn{
-        width: 200px;
-        height:100px;
-    }
-    #difficult-btn{
-        width: 200px;
-        height:100px;
-    }
-
     .button-container{
         margin-top: 50px;
     }
 }
-
 @media  screen and (min-width :768px) {
-    
 
-    .main-title{
+     .main-title{
         font-size: 72px;
     }
 
@@ -168,25 +108,13 @@ body{
         font-size: 42px;
     }
     
-    #easy-btn{
+    .difficulty-buttons{
         width: 300px;
         height:150px;
         font-size: 28px;
         margin:100px;
     }
-    #medium-btn{
-        width: 300px;
-        height:150px;
-        font-size: 28px;
-        margin:100px;
-    }
-    #difficult-btn{
-        width: 300px;
-        height:150px;
-        font-size: 28px;
-        margin:100px;
-    }
-
+    
     .button-container{
         margin-top: 100px;
     }
@@ -194,24 +122,8 @@ body{
     #nav-bar{
         font-size: 2vh;
     }
-
-    #option1{
+    .answer-button{
         font-size: 3.5vh;
         width: 45vw;
-    }
-    #option2{
-        font-size: 3.5vh;
-        width: 45vw;
-    }
-    #option3{
-    font-size: 3.5vh;
-    width: 45vw;
-}
-    
-    #option4{
-        font-size: 3.5vh;
-        width:45vw;
-        }
-
-    
+    } 
 }

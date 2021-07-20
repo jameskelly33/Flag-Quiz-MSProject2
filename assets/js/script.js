@@ -414,6 +414,7 @@ function generateQuestion(){
   flag.src = `https://flagcdn.com/w${flagWidth}/${answerFlag}.png`
   //initialise question array ready for next question
   questionArray=[]
+  document.getElementById('score-count').classList.remove('flash-once')
   for (answerButton of answerButtonArray){
     answerButton.addEventListener('click', checkAnswer)
   }
@@ -430,6 +431,9 @@ function checkAnswer (event){
     let isCorrect = (country)=> country === correctAnswer
     questionCount +=1
     correctCount +=1
+    document.getElementById('score-count').classList.add('flash-once')
+    
+    
     score += (gameArray.findIndex(isCorrect) +1)+difficultyMultiplier
     for (answerButton of answerButtonArray){
         answerButton.removeEventListener('click', checkAnswer)}
@@ -470,7 +474,6 @@ function showMistakes(){
     errorFlag.parentNode.insertBefore(flagCaption,errorFlag.nextSibling)
   } 
 }
-
 let sortedHighScores={}
 function addName(){
   document.getElementById('scoreboard').classList.remove('hidden')
@@ -492,15 +495,11 @@ function addName(){
   }
  
 }
-
 document.getElementById('submitName').addEventListener('click',addName)
-
-
 function sortObject(object){
   return Object.fromEntries(
     Object.entries(object).sort(([,a],[,b]) => b-a))
 }
-
 function updateScoreboard (userScores){   
   let rowCount=1
   for (x of Object.values(userScores)){

@@ -23,6 +23,9 @@
                 <h2 class='sub-title'>How well do you know the flags of the world?</h2>
                 <h3 class='btn-title'>Choose your difficulty level</h3>
               </div>
+              <div>
+                <img class = 'flaggy'src="https://flagcdn.com/mn.svg" alt="">
+              </div>
             </div>
         </div>
     </div>
@@ -43,7 +46,7 @@
         </span>
         <span id='score-count' >Score 0</span>
         <span id='timer'>Time:30</span>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#closeQuizWarning"class="btn-close ml-auto p-2" aria-label="Close"></button>
+        <button type="button" id='closeQuiz' data-bs-toggle="modal" data-bs-target="#closeQuizWarning"class="btn-close ml-auto p-2" aria-label="Close"></button>
       </nav>
     <div class="container-fluid text-center flag-container">
         <div class="row">
@@ -79,11 +82,14 @@
     <div class="modal-dialog  modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLabel">Are you sure you want to quit the quiz?</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h3 class="modal-title" id="exampleModalLabel">Quit Game</h3>
+          <button type="button" id = 'close-modal1' class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to quit the quiz?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" id= 'close-modal2' class="btn btn-secondary" data-bs-dismiss="modal">No</button>
           <a type="button" class="btn btn-primary" href="/index.html">Yes</a>
         </div>
       </div>
@@ -131,7 +137,7 @@
       <div class="container">
           <div class="row">
               <div class="col">
-                <table id = "scoreboard" class="table hidden">
+                <table id = "scoreboard" class="table table-primary table-striped hidden">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -140,8 +146,6 @@
                       </tr>
                     </thead>
                     <tbody id="table-body">
-                      
-                     
                     </tbody>
                   </table>
               </div>

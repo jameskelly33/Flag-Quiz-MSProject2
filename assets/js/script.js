@@ -326,8 +326,10 @@ else{flagWidth =640}
  //---------------------------------Quiz-------------------------------------- //
 //-----------------Timer -----------//
  let seconds
+ let intervaliId
+ let timeRemaining
  function startTimer(seconds) {
-  let intervalId = setInterval(countDown, 1000);
+  intervalId = setInterval(countDown, 1000);
   function countDown() {
       document.getElementById('timer').innerHTML=`Time: ${seconds}`;
       if (seconds ===0){
@@ -339,6 +341,7 @@ else{flagWidth =640}
         {seconds = seconds -= 1}
       }
       else {seconds = seconds -= 1}
+      timeRemaining=seconds
   }
 } 
 //--------Select Difficulty----------??
@@ -364,7 +367,7 @@ document.getElementById('difficult-btn').addEventListener('click',function (){
 function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
-  startTimer(12)
+  startTimer(29)
   generateQuestion() 
 }
  //get the key of a value function//
@@ -432,8 +435,6 @@ function checkAnswer (event){
     questionCount +=1
     correctCount +=1
     document.getElementById('score-count').classList.add('flash-once')
-    
-    
     score += (gameArray.findIndex(isCorrect) +1)+difficultyMultiplier
     for (answerButton of answerButtonArray){
         answerButton.removeEventListener('click', checkAnswer)}
@@ -452,9 +453,9 @@ function finishGame(){
   document.getElementById('quiz-container').classList.add('hidden')
   document.getElementById('scorepage').classList.remove('hidden')
   document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points.`
+  document.getElementById('question-total').innerText=`You answered ${correctCount} out of ${questionCount} questions `
   if (incorrectAnswerArray.length>=1){
   showMistakes()}
-
 }
 const mistakeFlags = document.getElementById('mistakes')
 function showMistakes(){
@@ -515,7 +516,16 @@ function updateScoreboard (userScores){
     rowCount+=1
   }
   }
-
+  document.getElementById('closeQuiz').addEventListener('click',pauseQuiz)
+  document.getElementById('close-modal1').addEventListener('click',resumeQuiz)
+  document.getElementById('close-modal2').addEventListener('click',resumeQuiz)
+  
+  function pauseQuiz(){
+    clearInterval(intervalId)
+  }
+  function resumeQuiz(){
+    startTimer(timeRemaining)
+  }
 
 
 

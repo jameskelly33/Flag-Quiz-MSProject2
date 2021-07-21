@@ -367,7 +367,7 @@ document.getElementById('difficult-btn').addEventListener('click',function (){
 function getQuiz(){
   document.getElementById('quiz-container').classList.remove('hidden')
   document.getElementById('home-container').classList.add('hidden')
-  startTimer(29)
+  startTimer(2)
   generateQuestion() 
 }
  //get the key of a value function//
@@ -494,7 +494,6 @@ function addName(){
     window.localStorage.setItem('highScores', JSON.stringify(sortedHighScores))
     updateScoreboard(sortedHighScores)
   }
- 
 }
 document.getElementById('submitName').addEventListener('click',addName)
 function sortObject(object){

@@ -26,9 +26,9 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid button-container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col text-center">
+            <div class="col text-center button-container">
                 <button id='easy-btn'   class='btn btn-primary difficulty-buttons'>Easy</button>
                 <button id ='medium-btn' class='btn btn-primary difficulty-buttons'>Medium</button>
                 <button id ='difficult-btn' class='btn btn-primary difficulty-buttons'>Difficult</button>
@@ -43,7 +43,7 @@
         </span>
         <span id='score-count' >Score 0</span>
         <span id='timer'>Time:30</span>
-        <button type="button" id='closeQuiz' data-bs-toggle="modal" data-bs-target="#closeQuizWarning"class="btn-close ml-auto p-2" aria-label="Close"></button>
+        <button type="button" id='closeQuiz' data-bs-toggle="modal" data-bs-target="#closeQuizWarning"class="btn-close align-self-start p-2" aria-label="Close"></button>
       </nav>
     <div class="container-fluid text-center flag-container">
         <div class="row">
@@ -119,14 +119,14 @@
               <div class="col text-center">
                   <h1 id='score-heading'>Congratulations you scored # points.  </h1>
                   <h2 id ='question-total'>You answered # out of # questions correctly</h2>
-                  <div class="container-fluid text-center hidden" id=mistakes>
-                    <h3 >Your mistakes were:</h3>
+                  <div class="container-fluid text-center " id=mistakes>
+                    <h3 class= 'mb-5'>Your mistakes were:</h3>
                    </div>
                    <div class="container">
                      <div class="row">
                        <div class="col">
-                        <a id='save-score-button' data-bs-toggle="modal" data-bs-target="#save-score-modal" class='btn btn-primary mx-5 text-center'>Save Score</a>
-                        <a id='reset-button' href="/index.html" class='btn btn-primary text-center'>Play Again</a>
+                        <a id='save-score-button' data-bs-toggle="modal" data-bs-target="#save-score-modal" class='btn btn-primary btn-lg mx-5 scorepage-buttons text-center'>Save Score</a>
+                        <a id='reset-button' href="/index.html" class='btn btn-primary btn-lg scorepage-buttons text-center'>Play Again</a>
                        </div>
                       </div>
                    </div>
@@ -139,7 +139,7 @@
                 <table id = "scoreboard" class="table table-primary table-striped hidden">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Position</th>
                         <th scope="col">Name</th>
                         <th scope="col">Score</th>
                       </tr>

@@ -40,9 +40,7 @@ p{
 .hidden{
     display:none;
 }
-.button-container{
-    margin-top: 20px;
-}
+
 
 .difficulty-buttons{
     background-color:var(--button-background);
@@ -62,6 +60,10 @@ p{
 .flag-container{
     margin-top: 25px;
     margin-bottom: 50px;
+   
+}
+#flag{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 .modal-title{
     color: var(--font-color);
@@ -73,6 +75,7 @@ p{
     width:40vw;
     height:20vh;
     margin:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 .flashing {
     animation: blinker 1.5s linear infinite;
@@ -95,6 +98,30 @@ p{
 .modal-title{
     color: var(--secondary-background)
 }
+
+#score-heading{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+#question-total{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.scorepage-buttons{
+    margin: 50px
+}
+.figure-caption{
+    color:var(--font-color)
+}
+.figure{
+    margin: top 50px;
+}
+
+#scoreboard{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
 @media  screen and (min-width :320px) {
     .button-container{
         margin-top: 50px;
@@ -118,11 +145,11 @@ p{
     }
     
     .button-container{
-        margin-top: 100px;
+        margin-top: 50px;
     }
 
     #nav-bar{
-        font-size: 2vh;
+        font-size: 1.5rem;
     }
     .answer-button{
         font-size: 3.5vh;

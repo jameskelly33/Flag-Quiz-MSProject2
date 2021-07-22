@@ -496,6 +496,7 @@ function addName(){
    window.localStorage.setItem('highScores', JSON.stringify(sortedHighScores))
    updateScoreboard(sortedHighScores)
  }
+ document.getElementById('save-score-button').classList.add('hidden')
 }
 document.getElementById('submitName').addEventListener('click',addName)
 function sortObject(object){

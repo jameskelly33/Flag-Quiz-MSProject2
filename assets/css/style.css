@@ -1,10 +1,10 @@
 :root {
-    --primary-background: #3F91A9;
-    --secondary-background: #7592D0;
-    --button-background:#83A7CF;
+    --primary-background: #ECF4EF;
+    --secondary-background: #ECF4EF;
+    --button-background:#F5B653;
     --incorrect-color:red;
     --correct-color:green;
-    --font-color:#F2F4EF;
+    --font-color:#2A3338;
   }
 body{
     font-family: 'Rubik', sans-serif;
@@ -82,7 +82,7 @@ p{
   }
   
   @keyframes blinker {
-    50% {
+    75% {
       opacity: 0;
     }
   }

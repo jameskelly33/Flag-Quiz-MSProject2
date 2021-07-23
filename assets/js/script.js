@@ -365,7 +365,7 @@ document.getElementById('difficult-btn').addEventListener('click',function (){
 function getQuiz(){
  document.getElementById('quiz-container').classList.remove('hidden');
  document.getElementById('home-container').classList.add('hidden');
- startTimer(29);
+ startTimer(5);
  generateQuestion() ;
 }
 //get the key of a value function//
@@ -453,10 +453,21 @@ function checkAnswer (event){
    questionCount +=1;
    setTimeout(generateQuestion,1000);
  }}
+let message 
 function finishGame(){
  document.getElementById('quiz-container').classList.add('hidden');
  document.getElementById('scorepage').classList.remove('hidden');
- document.getElementById('score-heading').innerText=`Congratulations you scored ${score} points.`;
+ if (score ===0){
+   message = "Oh dear...";}
+   else if( correctCount<incorrectAnswerArray.length){
+     message = "Not bad,"
+    }
+     else if(correctCount>=incorrectAnswerArray.length){
+       message = 'Well done';}
+       else if(incorrectAnswerArray.length ===0){
+         message = "Outstanding!"
+       }
+ document.getElementById('score-heading').innerText=`${message} you scored ${score} points.`;
  document.getElementById('question-total').innerText=`You answered ${correctCount} out of ${questionCount} questions correctly`;
  if (incorrectAnswerArray.length>=1){
  showMistakes()}

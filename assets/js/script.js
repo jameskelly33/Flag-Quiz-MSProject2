@@ -315,14 +315,12 @@ const easyArray = countryStringEasy.split(',');
 const mediumArray = countryStringMedium.split(',');
 const hardArray =countryStringHard.split(',');
 //Setting the flag size for different devices//
-let flagHeight;
-const smallScreen = 350;
-const medScreen = 900;
+let flagSize; 
+const mobileScreen = 350
+const mediumScreen = 700;
+const largeScreen=1200;
 let intViewportWidth = window.innerWidth;
-if(intViewportWidth <smallScreen){
- flagHeight =120;
-} else if(intViewportWidth<medScreen){flagHeight=120;}
-else{flagHeight =240;}
+
 //---------------------------------Quiz-------------------------------------- //
 //-----------------Timer -----------//
 let seconds;
@@ -414,7 +412,13 @@ function generateQuestion(){
  correctAnswerArray.push(correctAnswer);
  //set correct answer flag
  let answerFlag= getKeyByValue(countryCodes,correctAnswer);
- flag.src = `https://flagcdn.com/h${flagHeight}/${answerFlag}.png`;
+  intViewportWidth = window.innerWidth;
+if(intViewportWidth<mobileScreen){
+ flagSize ='h80';
+} else if(intViewportWidth<mediumScreen){flagSize='h120';}
+else if(intViewportWidth<largeScreen){flagSize='h240'}
+else{flagSize ='w640';}
+ flag.src = `https://flagcdn.com/${flagSize}/${answerFlag}.png`;
  //initialise question array ready for next question
  questionArray=[];
  document.getElementById('score-count').classList.remove('flash-once');

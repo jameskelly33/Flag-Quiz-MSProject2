@@ -45,8 +45,8 @@ p{
 .difficulty-buttons{
     background-color:var(--button-background);
     border-color:var(--secondary-background);
-    width: 300px;
-    height:150px;
+    width:66vw;
+    height: 15vh;
     font-size: 20px;
     margin:20px;
     color: var(--font-color);
@@ -72,8 +72,8 @@ p{
     background-color: var(--button-background);
     border-color:var(--button-background);
     color: var(--font-color);
-    width:40vw;
-    height:20vh;
+    width:30vw;
+    height:15vh;
     margin:10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
@@ -122,10 +122,16 @@ p{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
-@media  screen and (min-width :320px) {
+@media  screen and (min-width :350px) {
     .button-container{
         margin-top: 50px;
     }
+    .answer-button{
+        width: 40vw;
+        height:20vh;
+    }
+
+   
 }
 @media  screen and (min-width :768px) {
 
@@ -136,16 +142,16 @@ p{
     .sub-title{
         font-size: 42px;
     }
-    
+    .btn-title{
+        margin-top: 10vh;
+    }
     .difficulty-buttons{
-        width: 300px;
-        height:150px;
+        width: 25vw;
         font-size: 28px;
-        margin:100px;
     }
     
     .button-container{
-        margin-top: 50px;
+        margin-top: 15vh;
     }
 
     #nav-bar{

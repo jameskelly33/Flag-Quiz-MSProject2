@@ -13,29 +13,35 @@
     <title>Flag Quiz</title>
 </head>
 <body>
-    <div id='home-container' class = ''>
-      
-    <div class="container-fluid text-center">
+    <div id='home-container' class = ''> 
+      <div class="container-fluid text-center">
         <div class="row">
             <div class="col">
               <div class='text-box'>
                 <h1 class='main-title'>Flag Quiz</h1>
                 <h2 class='sub-title'>How well do you know the flags of the world?</h2>
-                <h3 class='btn-title'>Choose your difficulty level</h3>
               </div>
+              <div>
+                <h3 class='btn-title'>Choose your difficulty level</h3>
+              </div>  
             </div>
         </div>
-    </div>
-    <div class="container-fluid">
+      </div>
+      <div class="container-fluid button-container text-center">
         <div class="row">
-            <div class="col text-center button-container">
-                <button id='easy-btn'   class='btn btn-primary difficulty-buttons'>Easy</button>
+              <div class="col-md-4">
+                <button id='easy-btn' class='btn btn-primary difficulty-buttons'>Easy</button>
+              </div>  
+              <div class="col-md-4">
                 <button id ='medium-btn' class='btn btn-primary difficulty-buttons'>Medium</button>
-                <button id ='difficult-btn' class='btn btn-primary difficulty-buttons'>Difficult</button>
-            </div>
+              </div>
+                <div class="col-md-4">
+                  <button id ='difficult-btn' class='btn btn-primary difficulty-buttons'>Difficult</button>
+                </div>
         </div>
+      </div>
     </div>
-</div>
+
     <div id='quiz-container' class="hidden container-fluid">
     <nav id ='nav-bar' class="navbar d-flex justify-content-evenly">
         <span id ='question-count' class=''>

@@ -98,6 +98,9 @@
       </div>
     </div>
   </div>
+
+
+  
   
   <div class="modal fade" id="save-score-modal" tabindex="-1" aria-labelledby="save-score-modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -110,7 +113,6 @@
               <p>Enter your name below.</p>
               <input type="text" class="form-control" id="nameInput" placeholder="Name">
             </div>
-      
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quit</button>
           <button id ='submitName' type="submit"  data-bs-dismiss='modal' class="btn btn-primary">Save</button>
@@ -118,6 +120,28 @@
       </div>
     </div>
   </div>
+
+
+
+
+  <div class="modal fade" id="closeWithoutSaveWarning" tabindex="-1" aria-labelledby="closeWithoutSaveWarning" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Score not saved</h3>
+          <button type="button" id = 'close-modal1' class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Would you like to save your score before you play again?</p>
+        </div>
+        <div class="modal-footer">
+          <a type="button" href="/index.html" class="btn btn-secondary" >No</a>
+          <button type="button" class="btn btn-primary" data-bs-dismiss ='modal' data-bs-toggle="modal" data-bs-target="#save-score-modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!------Scorepage-->
   <div id='scorepage' class ='hidden'>
       <div class="container-fluid">
@@ -132,7 +156,7 @@
                      <div class="row">
                        <div class="col">
                         <a id='save-score-button' data-bs-toggle="modal" data-bs-target="#save-score-modal" class='btn btn-primary btn-lg mx-5 scorepage-buttons text-center'>Save Score</a>
-                        <a id='reset-button' href="/index.html" class='btn btn-primary btn-lg scorepage-buttons text-center'>Play Again</a>
+                        <a id='reset-button' data-bs-toggle="modal" data-bs-target="#closeWithoutSaveWarning" class='btn btn-primary btn-lg scorepage-buttons text-center'>Play Again</a>
                        </div>
                       </div>
                    </div>

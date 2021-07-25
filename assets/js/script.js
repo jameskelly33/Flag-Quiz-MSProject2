@@ -458,7 +458,11 @@ function finishGame(){
  document.getElementById('quiz-container').classList.add('hidden');
  document.getElementById('scorepage').classList.remove('hidden');
  if (score ===0){
-   message = "Oh dear...";}
+   message = "Oh dear...";
+   document.getElementById('save-score-button').classList.add('hidden')
+   document.getElementById('reset-button').removeAttribute('data-bs-target')
+   document.getElementById('reset-button').removeAttribute('data-bs-toggle')
+   document.getElementById('reset-button').setAttribute('href',"/index.html")}
    else if( correctCount<incorrectAnswerArray.length){
      message = "Not bad,"
     }
@@ -490,48 +494,75 @@ function showMistakes(){
    errorFlag.parentNode.insertBefore(flagCaption,errorFlag.nextSibling);
  } 
 }
-let sortedHighScores={};
+let userName
+let uniqueID
+let newScoreIndex
+let sortedHighScores=[]
 function addName(){
  document.getElementById('scoreboard').classList.remove('hidden')
- let userName = document.getElementById('nameInput').value;
+ userName = document.getElementById('nameInput').value;
  if (userName===''){
    userName='Anonymous'};
  const highScorePresent =  (window.localStorage.getItem('highScores'));
- let user ={[userName]:score};
+ let user = {name:userName,score:score}
  if (highScorePresent===null){
-   let user ={[userName]:score}
-   window.localStorage.setItem('highScores',JSON.stringify(user))
-   sortedHighScores=user;
+    sortedHighScores.push(user)
+    window.localStorage.setItem('highScores',JSON.stringify(sortedHighScores))
+    updateScoreboard()
+   
  }
  else{
-   let highScoreObject = JSON.parse(window.localStorage.getItem('highScores'))
-   highScoreObject[userName] = score;
-   sortedHighScores =sortObject(highScoreObject)
-   window.localStorage.removeItem('highScores')
-   window.localStorage.setItem('highScores', JSON.stringify(sortedHighScores))
-   updateScoreboard(sortedHighScores)
+   let highScoreString =(window.localStorage.getItem('highScores'))
+   uniqueID = "*"+userName 
+   user ={name:uniqueID,score:score}
+   let userString = JSON.stringify(user)
+   let combinedStrings = joinTwoStrings(highScoreString,userString)
+   var jsonStr = combinedStrings.replace(/(\w+:)|(\w+ :)/g, function(matchedStr) {
+    return '"' + matchedStr.substring(0, matchedStr.length - 1) + '":';
+  });
+  sortedHighScores=JSON.parse(jsonStr)
+  sortedHighScores.sort(compare)
+  newScoreIndex= findHighScoreIndex(sortedHighScores)
+  console.log(sortedHighScores[newScoreIndex].name=uniqueID.slice(1))
+  window.localStorage.removeItem('highScores')
+  window.localStorage.setItem('highScores',JSON.stringify(sortedHighScores))
+  updateScoreboard()
  }
  document.getElementById('save-score-button').classList.add('hidden');
 }
+
+
 document.getElementById('submitName').addEventListener('click',addName);
-function sortObject(object){
+/* function sortObject(object){
  return Object.fromEntries(
    Object.entries(object).sort(([,a],[,b]) => b-a))
-};
-function updateScoreboard (userScores){   
+}; */
+function updateScoreboard (){   
  let rowCount=1;
- for (x of Object.values(userScores)){
+ for (x of sortedHighScores){
    const tableBody = document.getElementById('table-body');
    const tableRow = document.createElement('tr');
    const tableData1 = document.createElement('td');
    const tableData2 = document.createElement('td');
    const tableData3 = document.createElement('td');
    tableBody.appendChild(tableRow);
-   tableRow.appendChild(tableData1).innerText=`${rowCount}`;
-   tableRow.appendChild(tableData2).innerText= `${getKeyByValue(userScores,x)}`;
-   tableRow.appendChild(tableData3).innerText=`${x}`;
-   rowCount+=1;
+   
+    if (rowCount===newScoreIndex+1){
+      tableRow.classList.add('table-danger')
+      tableRow.appendChild(tableData1).innerText=`${rowCount}`;
+      tableRow.appendChild(tableData2).innerText= `${x.name}`;
+      tableRow.appendChild(tableData3).innerText=`${x.score}`;
+    }
+    else{
+      tableRow.appendChild(tableData1).innerText=`${rowCount}`;
+      tableRow.appendChild(tableData2).innerText= `${x.name}`;
+      tableRow.appendChild(tableData3).innerText=`${x.score}`;}
+  rowCount+=1;
  }
+ document.getElementById('reset-button').removeAttribute('data-bs-target')
+ document.getElementById('reset-button').removeAttribute('data-bs-toggle')
+ document.getElementById('reset-button').setAttribute('href',"/index.html")
+
  }
  document.getElementById('closeQuiz').addEventListener('click',pauseQuiz);
  document.getElementById('close-modal1').addEventListener('click',resumeQuiz);
@@ -543,3 +574,23 @@ function updateScoreboard (userScores){
  function resumeQuiz(){
    startTimer(timeRemaining)
  };
+function compare( b, a ) {
+  if ( a.score < b.score ){
+    return -1;
+  }
+  if ( a.score > b.score ){
+    return 1;
+  }
+  return 0;
+}
+function joinTwoStrings(string1,string2){
+  return string1.slice(0,string1.length-1)+','+string2+']'
+}
+function findHighScoreIndex(object){
+    return object.findIndex(x => x.name ===uniqueID
+      )
+}
+
+
+
+    

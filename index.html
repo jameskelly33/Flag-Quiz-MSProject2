@@ -13,7 +13,7 @@
     <title>Flag Quiz</title>
 </head>
 <body>
-    <div id='home-container' class = ''> 
+    <div id='home-container'> 
       <div class="container-fluid text-center">
         <div class="row">
             <div class="col">
@@ -31,6 +31,7 @@
         <div class="row">
               <div class="col-md-4">
                 <button id='easy-btn' class='btn btn-primary difficulty-buttons'>Easy</button>
+                
               </div>  
               <div class="col-md-4">
                 <button id ='medium-btn' class='btn btn-primary difficulty-buttons'>Medium</button>
@@ -54,7 +55,7 @@
     <div class="container-fluid text-center flag-container">
         <div class="row">
             <div class="col-xs-12">
-               <img id = 'flag' src="#" alt=""> 
+               <img id = 'flag' class='img-fluid' src="#" alt=""> 
             </div>
         </div>
     </div>
@@ -144,16 +145,16 @@
 
   <!------Scorepage-->
   <div id='scorepage' class ='hidden'>
-      <div class="container-fluid">
+      <div class="container-fluid ">
           <div class="row">
               <div class="col text-center">
                   <h1 id='score-heading'>Congratulations you scored # points.  </h1>
                   <h2 id ='question-total'>You answered # out of # questions correctly</h2>
-                  <div class="container-fluid text-center " id=mistakes>
+                  <div class="container-fluid text-center hidden" id=mistakes>
                     <h3 class= 'mb-5'>Your mistakes were:</h3>
-                   </div>
+                  </div>
                    <div class="container">
-                     <div class="row">
+                     <div class="row ">
                        <div class="col">
                         <a id='save-score-button' data-bs-toggle="modal" data-bs-target="#save-score-modal" class='btn btn-primary btn-lg mx-5 scorepage-buttons text-center'>Save Score</a>
                         <a id='reset-button' data-bs-toggle="modal" data-bs-target="#closeWithoutSaveWarning" class='btn btn-primary btn-lg scorepage-buttons text-center'>Play Again</a>

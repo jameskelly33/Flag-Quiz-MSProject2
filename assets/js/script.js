@@ -320,7 +320,6 @@ const mobileScreen = 350
 const mediumScreen = 700;
 const largeScreen=1200;
 let intViewportWidth = window.innerWidth;
-
 //---------------------------------Quiz-------------------------------------- //
 //-----------------Timer -----------//
 let seconds;
@@ -360,15 +359,13 @@ document.getElementById('difficult-btn').addEventListener('click',function (){
  difficultyMultiplier = gameArray.length *2;
  getQuiz();
 })
-
 //--------START GAME------------//
 function getQuiz(){
  document.getElementById('quiz-container').classList.remove('hidden');
  document.getElementById('home-container').classList.add('hidden');
- startTimer(5);
+ startTimer(30);
  generateQuestion() ;
 }
-//get the key of a value function//
 function getKeyByValue(object, value) {
   return Object.keys(object).find(key => object[key] === value);
 }
@@ -386,7 +383,6 @@ let incorrectAnswerArray=[];
 let questionCount=1;
 let score=0;
 let correctCount=0;
-
 function generateQuestion(){ 
  for (let i=0;i<4;i++){
    let randomCountry = gameArray[Math.floor(Math.random()*gameArray.length)];
@@ -509,7 +505,6 @@ function addName(){
     sortedHighScores.push(user)
     window.localStorage.setItem('highScores',JSON.stringify(sortedHighScores))
     updateScoreboard()
-   
  }
  else{
    let highScoreString =(window.localStorage.getItem('highScores'))
@@ -530,13 +525,7 @@ function addName(){
  }
  document.getElementById('save-score-button').classList.add('hidden');
 }
-
-
 document.getElementById('submitName').addEventListener('click',addName);
-/* function sortObject(object){
- return Object.fromEntries(
-   Object.entries(object).sort(([,a],[,b]) => b-a))
-}; */
 function updateScoreboard (){   
  let rowCount=1;
  for (x of sortedHighScores){
@@ -546,7 +535,6 @@ function updateScoreboard (){
    const tableData2 = document.createElement('td');
    const tableData3 = document.createElement('td');
    tableBody.appendChild(tableRow);
-   
     if (rowCount===newScoreIndex+1){
       tableRow.classList.add('table-danger')
       tableRow.appendChild(tableData1).innerText=`${rowCount}`;
@@ -562,7 +550,6 @@ function updateScoreboard (){
  document.getElementById('reset-button').removeAttribute('data-bs-target')
  document.getElementById('reset-button').removeAttribute('data-bs-toggle')
  document.getElementById('reset-button').setAttribute('href',"/index.html")
-
  }
  document.getElementById('closeQuiz').addEventListener('click',pauseQuiz);
  document.getElementById('close-modal1').addEventListener('click',resumeQuiz);

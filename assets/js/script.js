@@ -341,6 +341,7 @@ function startTimer(seconds) {
      timeRemaining=seconds;
  }
 } 
+
 //--------Select Difficulty----------??
 let gameArray =[];
 let difficultyMultiplier;
@@ -512,7 +513,7 @@ function addName(){
    user ={name:uniqueID,score:score}
    let userString = JSON.stringify(user)
    let combinedStrings = joinTwoStrings(highScoreString,userString)
-   var jsonStr = combinedStrings.replace(/(\w+:)|(\w+ :)/g, function(matchedStr) {
+   let jsonStr = combinedStrings.replace(/(\w+:)|(\w+ :)/g, function(matchedStr) {
     return '"' + matchedStr.substring(0, matchedStr.length - 1) + '":';
   });
   sortedHighScores=JSON.parse(jsonStr)
@@ -574,8 +575,7 @@ function joinTwoStrings(string1,string2){
   return string1.slice(0,string1.length-1)+','+string2+']'
 }
 function findHighScoreIndex(object){
-    return object.findIndex(x => x.name ===uniqueID
-      )
+    return object.findIndex(x => x.name ===uniqueID)
 }
 
 

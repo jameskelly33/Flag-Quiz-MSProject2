@@ -106,13 +106,13 @@ html body{
     font-size: 0.8rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
+
+
 .answer-button:focus{
  border-color: var(--button-background);
  color: var(--font-color);
 }
-.answer-button:active{
-    border-color: var(--button-background);
-   }
+
 
 .flashing {
     animation: blinker 1.5s linear infinite;
@@ -204,4 +204,6 @@ html body{
     #flag{
         max-height: 320px;
     }
+   
+
 }

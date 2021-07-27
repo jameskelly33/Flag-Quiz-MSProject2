@@ -6,7 +6,7 @@
     --correct-color:green;
     --font-color:#2A3338;
   }
-body{
+html body{
     font-family: 'Rubik', sans-serif;
     color: var(--font-color);
     width: 100%;
@@ -56,8 +56,8 @@ body{
     height: 5vh;
 }
 .flag-container{
-    margin-top: 25px;
-    margin-bottom: 50px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 #flag{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
@@ -100,9 +100,10 @@ body{
     background-color: var(--button-background);
     border-color:var(--button-background);
     color: var(--font-color);
-    width:30vw;
+    width:35vw;
     height:15vh;
     margin:10px;
+    font-size: 0.8rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 .answer-button:focus{
@@ -122,14 +123,18 @@ body{
     }
   }
 .flash-once{
-    animation: blinker  1s linear  1;
-    color:green;}
-    @keyframes blinker {
+    animation: flash 1.5s linear  1;}
+    @keyframes flash {
         50% {
-          opacity: 0;
-        }}  
-
-
+          opacity: 50%;
+        }
+        from{
+            color: var(--font-color);
+        }
+        to{
+            color:green;
+        }
+    }  
 #score-heading{
     margin-top: 50px;
     margin-bottom: 20px;
@@ -162,10 +167,10 @@ body{
     .button-container{
         margin-top: 50px;
     }
-    .answer-button{
-        width: 40vw;
-        height:20vh;
-    } 
+    .answer-button-container{
+        margin-top :20px
+    }
+     
 }
 @media  screen and (min-width :768px) {
      .main-title{
@@ -189,7 +194,14 @@ body{
         font-size: 1.5rem;
     }
     .answer-button{
-        font-size: 3.5vh;
-        width: 45vw;
-    } 
+        font-size: 3vh;
+        width: 40vw;
+    }
+    .answer-button-container{
+        margin-top:10vh;
+    }
+
+    #flag{
+        max-height: 320px;
+    }
 }

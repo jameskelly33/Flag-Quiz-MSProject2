@@ -11,7 +11,7 @@ let flagSize;
 const mobileScreen = 350
 const mediumScreen = 700;
 const largeScreen=1200;
-const gameDuration = 5
+const gameDuration = 10
 let intViewportWidth = window.innerWidth;
 //---------------------------------Quiz-------------------------------------- //
 //-----------------Timer -----------//

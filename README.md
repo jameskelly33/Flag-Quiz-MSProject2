@@ -30,7 +30,7 @@ This site will meet these goals because
 
 ## **Wireframes**
 
-[Wireframes](assets/wireframes.bmpr)
+[Wireframes](./assets/wireframes.bmpr)
 
 ### **User Story**
 

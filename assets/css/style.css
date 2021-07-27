@@ -116,7 +116,6 @@ body{
 .flashing {
     animation: blinker 1.5s linear infinite;
   }
-  
   @keyframes blinker {
     75% {
       opacity: 0;
@@ -124,12 +123,12 @@ body{
   }
 .flash-once{
     animation: blinker  1s linear  1;
-    color:green;
+    color:green;}
     @keyframes blinker {
         50% {
           opacity: 0;
         }}  
-}
+
 
 #score-heading{
     margin-top: 50px;
@@ -154,7 +153,7 @@ body{
     color:var(--font-color)
 }
 .figure{
-    margin: top 50px;
+    margin-top: 50px;
 }
 #scoreboard{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

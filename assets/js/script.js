@@ -12,7 +12,7 @@ let flagSize;
 const mobileScreen = 350;
 const mediumScreen = 700;
 const largeScreen = 1200;
-const gameDuration = 100;
+const gameDuration = 300;
 let intViewportWidth = window.innerWidth;
 
 let seconds;
@@ -78,8 +78,13 @@ let incorrectAnswerArray = [];
 let questionCount = 1;
 let score = 0;
 let correctCount = 0;
-console.log(incorrectAnswerArray.length);
 function generateQuestion() {
+  const maxQuestions = gameArray.length-numberOfOptions
+  console.log(gameArray.length)
+  console.log(maxQuestions)
+  if (correctAnswerArray.length === maxQuestions){
+    finishGame()
+  }
   for (let i = 0; i < numberOfOptions; i++) {
     let randomCountry = gameArray[Math.floor(Math.random() * gameArray.length)];
     if (
@@ -87,10 +92,13 @@ function generateQuestion() {
       !correctAnswerArray.includes(randomCountry)
     ) {
       questionArray.push(randomCountry);
-    } else {
+    } 
+    else {
       i -= 1;
     }
-  }
+    
+
+  }console.log(correctAnswerArray)
   let questionArrayIndex = 0;
   for (answerButton of answerButtonArray) {
     answerButton.innerText = questionArray[questionArrayIndex];
@@ -145,8 +153,7 @@ function checkAnswer(event) {
       answerButton.removeEventListener("click", checkAnswer);
       answerButton.blur();
     }
-    setTimeout(generateQuestion, 1000)
-    document.getElementById();
+    setTimeout(generateQuestion, 1000);
   } else {
     event.target.style.backgroundColor = incorrectColor;
     document.getElementById(

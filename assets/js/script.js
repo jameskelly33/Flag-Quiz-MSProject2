@@ -12,7 +12,7 @@ let flagSize;
 const mobileScreen = 350;
 const mediumScreen = 700;
 const largeScreen = 1200;
-const gameDuration = 300;
+const gameDuration = 3;
 let intViewportWidth = window.innerWidth;
 
 let seconds;
@@ -96,8 +96,6 @@ function generateQuestion() {
     else {
       i -= 1;
     }
-    
-
   }console.log(correctAnswerArray)
   let questionArrayIndex = 0;
   for (answerButton of answerButtonArray) {
@@ -204,14 +202,16 @@ function finishGame() {
   }
   document.getElementById("game-results").classList.add("scorepage-centered");
 }
-const mistakeFlags = document.getElementById("mistakes");
+const mistakeGalleryHeadings = document.getElementById('mistakes')
+const mistakeGallery = document.getElementById("mistake-gallery");
+
 function showMistakes() {
-  mistakeFlags.classList.remove("hidden");
+  
   for (x of incorrectAnswerArray) {
     let errorFlagFigure = document.createElement("figure");
-    errorFlagFigure.setAttribute("class", "figure");
+    errorFlagFigure.setAttribute("class", "figure collapse");
     errorFlagFigure.setAttribute("id", "collapse-mistakes");
-    mistakeFlags.appendChild(errorFlagFigure);
+    mistakeGallery.appendChild(errorFlagFigure);
     let errorFlag = document.createElement("img");
     errorFlag.src = `https://flagcdn.com/h80/${getKeyByValue(
       countryCodes,
@@ -224,7 +224,13 @@ function showMistakes() {
     flagCaption.appendChild(captionText);
     errorFlagFigure.appendChild(errorFlag);
     errorFlag.parentNode.insertBefore(flagCaption, errorFlag.nextSibling);
+    if (intViewportWidth>mediumScreen){
+      document.getElementById('show-mistakes-btn').classList.add('hidden')
+      document.getElementById('collapse-mistakes').classList.add('show')
+    }
   }
+  mistakeGalleryHeadings.classList.remove('hidden');
+  mistakeGallery.classList.remove("hidden");
 }
 let userName;
 let uniqueID;

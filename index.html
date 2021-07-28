@@ -137,8 +137,16 @@
               <div id="game-results" class="col text-center">
                   <h1 id='score-heading'>Congratulations you scored # points.  </h1>
                   <h2 id ='question-total'>You answered # out of # questions correctly</h2>
-                  <div class="container-fluid text-center hidden" id=mistakes>
-                    <h3 class= 'mb-5'>Your mistakes were:</h3>
+                  <div class="container text-center hidden" id=mistakes>
+                    <h3>You made # mistakes.</h3>
+                    <button id='show-mistakes-btn' class= 'btn btn-primary mb-5' type ='button' data-bs-toggle="collapse" data-bs-target="#collapse-mistakes"aria-expanded="false" aria-controls="#collapse-mistakes">Show mistakes</button>
+                  </div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col" id='mistake-gallery'>
+
+                      </div>
+                    </div>
                   </div>
                    <div class="container">
                      <div class="row ">

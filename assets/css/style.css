@@ -154,6 +154,14 @@ html body{
     background-color: var(--secondary-background);
     border-color: var(--secondary-background);
 }
+.scorepage-buttons:focus{
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+}
+.scorepage-buttons:active{
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+}
 .figure-caption{
     color:var(--font-color)
 }
@@ -206,4 +214,4 @@ html body{
     }
    
 
-}
+}                         

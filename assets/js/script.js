@@ -12,7 +12,7 @@ let flagSize;
 const mobileScreen = 350;
 const mediumScreen = 700;
 const largeScreen = 1200;
-const gameDuration = 3;
+const gameDuration = 30;
 let intViewportWidth = window.innerWidth;
 
 let seconds;
@@ -78,10 +78,10 @@ let incorrectAnswerArray = [];
 let questionCount = 1;
 let score = 0;
 let correctCount = 0;
+let incorrectCount = 0
+
 function generateQuestion() {
   const maxQuestions = gameArray.length-numberOfOptions
-  console.log(gameArray.length)
-  console.log(maxQuestions)
   if (correctAnswerArray.length === maxQuestions){
     finishGame()
   }
@@ -96,7 +96,7 @@ function generateQuestion() {
     else {
       i -= 1;
     }
-  }console.log(correctAnswerArray)
+  }
   let questionArrayIndex = 0;
   for (answerButton of answerButtonArray) {
     answerButton.innerText = questionArray[questionArrayIndex];
@@ -165,6 +165,7 @@ function checkAnswer(event) {
       answerButton.blur();
     }
     questionCount += 1;
+    incorrectCount +=1
     setTimeout(generateQuestion, 1000);
   }
 }
@@ -196,17 +197,17 @@ function finishGame() {
   ).innerText = `${message} you scored ${score} points.`;
   document.getElementById(
     "question-total"
-  ).innerText = `You answered ${correctCount} out of ${questionCount} questions correctly`;
+  ).innerText = `You answered ${correctCount} questions correctly`;
   if (incorrectAnswerArray.length >= 1) {
     showMistakes();
   }
-  document.getElementById("game-results").classList.add("scorepage-centered");
+  
 }
 const mistakeGalleryHeadings = document.getElementById('mistakes')
 const mistakeGallery = document.getElementById("mistake-gallery");
 
 function showMistakes() {
-  
+  document.getElementById('mistake-count').innerText=`You made ${incorrectCount} mistakes.`
   for (x of incorrectAnswerArray) {
     let errorFlagFigure = document.createElement("figure");
     errorFlagFigure.setAttribute("class", "figure collapse");
@@ -224,10 +225,10 @@ function showMistakes() {
     flagCaption.appendChild(captionText);
     errorFlagFigure.appendChild(errorFlag);
     errorFlag.parentNode.insertBefore(flagCaption, errorFlag.nextSibling);
-    if (intViewportWidth>mediumScreen){
-      document.getElementById('show-mistakes-btn').classList.add('hidden')
-      document.getElementById('collapse-mistakes').classList.add('show')
-    }
+    // if (intViewportWidth>mediumScreen){
+    //   document.getElementById('show-mistakes-btn').classList.add('hidden')
+    //   document.getElementById('collapse-mistakes').classList.add('show')
+    // }
   }
   mistakeGalleryHeadings.classList.remove('hidden');
   mistakeGallery.classList.remove("hidden");
@@ -239,9 +240,6 @@ let sortedHighScores = [];
 function addName() {
   document.getElementById("scoreboard").classList.remove("hidden");
   userName = document.getElementById("nameInput").value;
-  if (userName === "") {
-    userName = "Anonymous";
-  }
   const highScorePresent = window.localStorage.getItem("highScores");
   let user = { name: userName, score: score };
   if (highScorePresent === null) {
@@ -263,14 +261,14 @@ function addName() {
     sortedHighScores = JSON.parse(jsonStr);
     sortedHighScores.sort(compare);
     newScoreIndex = findHighScoreIndex(sortedHighScores);
-    console.log((sortedHighScores[newScoreIndex].name = uniqueID.slice(1)));
+    (sortedHighScores[newScoreIndex].name = uniqueID.slice(1));
     window.localStorage.removeItem("highScores");
     window.localStorage.setItem("highScores", JSON.stringify(sortedHighScores));
     updateScoreboard();
   }
   document.getElementById("save-score-button").classList.add("hidden");
 }
-document.getElementById("submitName").addEventListener("click", addName);
+document.getElementById("submitName").addEventListener("click", validateName);
 function updateScoreboard() {
   let rowCount = 1;
   for (x of sortedHighScores) {
@@ -295,6 +293,7 @@ function updateScoreboard() {
   document.getElementById("reset-button").removeAttribute("data-bs-target");
   document.getElementById("reset-button").removeAttribute("data-bs-toggle");
   document.getElementById("reset-button").setAttribute("href", "/index.html");
+  document.getElementById('scoreboardHeading').classList.remove('hidden')
 }
 document.getElementById("closeQuiz").addEventListener("click", pauseQuiz);
 document.getElementById("close-modal1").addEventListener("click", resumeQuiz);
@@ -320,4 +319,29 @@ function joinTwoStrings(string1, string2) {
 }
 function findHighScoreIndex(object) {
   return object.findIndex((x) => x.name === uniqueID);
+}
+
+var myModal = new bootstrap.Modal(document.getElementById('save-score-modal'))
+
+function hideModal(){
+  
+  myModal.hide()
+}
+
+
+  //document.getElementById('submitName').addEventListener('click',hideModal)
+
+function validateName(event){
+  userName = document.getElementById("nameInput").value
+  if(userName== false || userName[0]==="*"){
+  event.preventDefault()
+  invalidNameWarning()
+}
+  else{addName()
+  hideModal()}
+  
+}
+
+function invalidNameWarning(){
+ document.getElementById('nameInput').classList.add('is-invalid')
 }

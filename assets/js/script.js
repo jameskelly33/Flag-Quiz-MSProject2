@@ -286,7 +286,7 @@ function updateScoreboard() {
   }
   document.getElementById("reset-button").removeAttribute("data-bs-target");
   document.getElementById("reset-button").removeAttribute("data-bs-toggle");
-  document.getElementById("reset-button").setAttribute("href", "https://jameskelly33.github.io/Flag-Quiz-Milestone-Project-2-/");
+  document.getElementById("reset-button").setAttribute("href", "https://jameskelly33.github.io/Flag-Quiz-MSProject2/");
   document.getElementById("scoreboardHeading").classList.remove("hidden")
 }
 document.getElementById("closeQuiz").addEventListener("click", pauseQuiz);

@@ -53,7 +53,7 @@ There is only one font used throughout the quiz which is ..... This font was cho
 
 The main consideration behind the colour palate of this site is having a primary background colour that does not clash with the flag. Colour is obviously very important in distinguishing flags and a background colour that is close to the white or red end of the spectrum would cause a lot of problems due to the high prevalence of those colours in world flags. As this site is aimed at front-end interactivity the buttons which a user presses needed to be of a significant contrast to the background as a call to action. Considering these factors, the following colour palette was created using the generator in [Colormind](http://colormind.io/bootstrap/)
 
-[Site Colour Palette](assets/images/colorscheme.png "Colour scheme used throughout site")
+![Site Colour Palette](assets/images/colorscheme.png "Colour scheme used throughout site")
 
 See this website for flag colour statistics. [Statistics on flag Colours](https://www.crwflags.com/fotw/flags/xf-csts.html).
 Red and green are used throughout the site for negative and positive feedback (for incorrect/correct and for time running out and scoring ) in order to create a quick and text-free way of passing information on to the user. 
@@ -64,7 +64,7 @@ Red and green are used throughout the site for negative and positive feedback (f
 
 ### **Homepage**
 
-[A mock-up of the homepage on different devices](assets/images/homepagescreenshot.png "Mock-up of the homepage")
+![A mock-up of the homepage on different devices](assets/images/homepagescreenshot.png "Mock-up of the homepage")
 
 * The homepage has a main title which reads Flag Quiz, a sub-heading asking the user 'How well do you know the flags of the world?' and a final line of text inviting the user to choose a difficulty level.
 * Below the text are three large buttons with the three levels of difficulty, easy, medium and difficult. 
@@ -72,7 +72,7 @@ Red and green are used throughout the site for negative and positive feedback (f
 
 ### **Main Quiz Page**  
 
-[A screenshot of the quiz in action](assets/images/basicquizscreenshot.png) "Screenshot of the the main quiz page"
+![A screenshot of the quiz in action](assets/images/basicquizscreenshot.png) "Screenshot of the the main quiz page"
 **Header**
 
 * Along the top of the page the question number, score, countdown timer and a close button are evenly spread out. 
@@ -142,7 +142,7 @@ Testing information can be found in this [separate file](testing.md).
 
 
 ## Deployment
-This site was developed using VS Code and liveserver and committed and pushed to Github through the VSCODE's source control options.
+This site was developed using VS Code and live server and committed and pushed to Github through the VSCODE's source control options.
 
 To deploy this page to GitHub Pages the following steps should be taken.
 
@@ -188,7 +188,7 @@ let jsonStr = combinedStrings.replace(/(\w+:)|(\w+ :)/g, function(matchedStr) {
   });
 ```
 
-* The compare function was taken from an answer to this [stckoverflow post](https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value).
+* The compare function was taken from an answer to this [stackoverflow post](https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value).
 
 ### Content
 
@@ -198,7 +198,7 @@ let jsonStr = combinedStrings.replace(/(\w+:)|(\w+ :)/g, function(matchedStr) {
 
 ### Acknowledgements 
 
-My CodeInsitute mentor, Antonija Simic, for her thorough and constructive feedback.
+My CodeInstitute mentor, Antonija Simic, for her thorough and constructive feedback.
 
 My friends and family for helping testing the site.
 

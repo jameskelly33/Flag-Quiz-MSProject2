@@ -78,23 +78,22 @@ let incorrectAnswerArray = [];
 let questionCount = 1;
 let score = 0;
 let correctCount = 0;
-let incorrectCount = 0
+let incorrectCount = 0;
 
 function generateQuestion() {
-  const maxQuestions = gameArray.length-numberOfOptions
+  const maxQuestions = gameArray.length-numberOfOptions;
   if (correctAnswerArray.length === maxQuestions){
-    finishGame()
+    finishGame();
   }
-  for (let i = 0; i < numberOfOptions; i++) {
+  for (let optionCount = 0; optionCount < numberOfOptions; optionCount++) {
     let randomCountry = gameArray[Math.floor(Math.random() * gameArray.length)];
     if (
       !questionArray.includes(randomCountry) &&
       !correctAnswerArray.includes(randomCountry)
     ) {
       questionArray.push(randomCountry);
-    } 
-    else {
-      i -= 1;
+    }else {
+      optionCount -= 1;
     }
   }
   let questionArrayIndex = 0;
@@ -201,14 +200,13 @@ function finishGame() {
   if (incorrectAnswerArray.length >= 1) {
     showMistakes();
   }
-  
 }
-const mistakeGalleryHeadings = document.getElementById('mistakes')
+const mistakeGalleryHeadings = document.getElementById("mistakes")
 const mistakeGallery = document.getElementById("mistake-gallery");
 
 function showMistakes() {
-  document.getElementById('mistake-count').innerText=`You made ${incorrectCount} mistakes.`
-  for (x of incorrectAnswerArray) {
+  document.getElementById("mistake-count").innerText=`You made ${incorrectCount} mistakes.`
+  for (mistake of incorrectAnswerArray) {
     let errorFlagFigure = document.createElement("figure");
     errorFlagFigure.setAttribute("class", "figure collapse");
     errorFlagFigure.setAttribute("id", "collapse-mistakes");
@@ -216,21 +214,17 @@ function showMistakes() {
     let errorFlag = document.createElement("img");
     errorFlag.src = `https://flagcdn.com/h80/${getKeyByValue(
       countryCodes,
-      x
+      mistake
     )}.png`;
     errorFlag.setAttribute("class", "px-5 figure-img img-fluid");
     let flagCaption = document.createElement("figcaption");
     flagCaption.setAttribute("class", "figure-caption text-center");
-    let captionText = document.createTextNode(x);
+    let captionText = document.createTextNode(mistake);
     flagCaption.appendChild(captionText);
     errorFlagFigure.appendChild(errorFlag);
     errorFlag.parentNode.insertBefore(flagCaption, errorFlag.nextSibling);
-    // if (intViewportWidth>mediumScreen){
-    //   document.getElementById('show-mistakes-btn').classList.add('hidden')
-    //   document.getElementById('collapse-mistakes').classList.add('show')
-    // }
   }
-  mistakeGalleryHeadings.classList.remove('hidden');
+  mistakeGalleryHeadings.classList.remove("hidden");
   mistakeGallery.classList.remove("hidden");
 }
 let userName;
@@ -293,7 +287,7 @@ function updateScoreboard() {
   document.getElementById("reset-button").removeAttribute("data-bs-target");
   document.getElementById("reset-button").removeAttribute("data-bs-toggle");
   document.getElementById("reset-button").setAttribute("href", "/index.html");
-  document.getElementById('scoreboardHeading').classList.remove('hidden')
+  document.getElementById("scoreboardHeading").classList.remove("hidden")
 }
 document.getElementById("closeQuiz").addEventListener("click", pauseQuiz);
 document.getElementById("close-modal1").addEventListener("click", resumeQuiz);
@@ -320,17 +314,10 @@ function joinTwoStrings(string1, string2) {
 function findHighScoreIndex(object) {
   return object.findIndex((x) => x.name === uniqueID);
 }
-
-var myModal = new bootstrap.Modal(document.getElementById('save-score-modal'))
-
+var myModal = new bootstrap.Modal(document.getElementById("save-score-modal"))
 function hideModal(){
-  
   myModal.hide()
 }
-
-
-  //document.getElementById('submitName').addEventListener('click',hideModal)
-
 function validateName(event){
   userName = document.getElementById("nameInput").value
   if(userName== false || userName[0]==="*"){
@@ -339,9 +326,7 @@ function validateName(event){
 }
   else{addName()
   hideModal()}
-  
 }
-
 function invalidNameWarning(){
- document.getElementById('nameInput').classList.add('is-invalid')
+ document.getElementById("nameInput").classList.add("is-invalid")
 }

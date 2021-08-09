@@ -2,7 +2,7 @@
 
 # **Flag Quiz Website**
 
-[A mock-up of the website on different devices](assets/images/quizscreenshot.png "Mock Up of the site")
+![A mock-up of the website on different devices](assets/images/quizscreenshot.png "Mock Up of the site")
 
 
 ## **Project Goals**
@@ -147,7 +147,7 @@ This site was developed using VS Code and live server and committed and pushed t
 To deploy this page to GitHub Pages the following steps should be taken.
 
 1. Log in to GitHub
-2. Select the Milestone-Project-1 repository
+2. Select the Milestone-Project-2 repository
 3. Click on Settings
 4. Select the Pages tab on the left sidebar.
 5. In the Source settings click on the dropdown menu that is currently displaying None.

@@ -75,39 +75,47 @@ All steps were taken on Google Chrome, Firefox, Safari and Internet Explorer on 
 
 **All testing steps were taken for 'easy', 'medium' and 'difficult' games**
 
+![GIF of testing procedure for easy game on desktop](assets/images/testinggame.gif "Testing procedure")
+![GIF of flashing animation for timer](assets/images/flashingtimer.gif "Flashing animation Timer")
+
 1. **Header**
-    * Check that question count starts at 1 and increases each time a question is selected.
-    * Check that score starts at 0 and increases each time a correct answer is selected. 
-    * Check that score animation works each time a correct answer is selected.
-    * Check that timer starts at 30 seconds and decreases as game is played.
-    * Check that timer flashing animation starts when it reaches 10 seconds.
-    * Check that game finishes when timer reaches zero.
-    * Click on the close game button to check that close game modal appears.
-    * Check that timer is paused upon clicking the close game button.
-    * Check that timer resumes at correct time when modal is closed or dismissed. 
+
+  * Check that question count starts at 1 and increases each time a question is selected.
+  * Check that score starts at 0 and increases each time a correct answer is selected. 
+  * Check that score animation works each time a correct answer is selected.
+  * Check that timer starts at 30 seconds and decreases as game is played.
+  * Check that timer flashing animation starts when it reaches 10 seconds.
+  * Check that game finishes when timer reaches zero.
+  * Click on the close game button to check that close game modal appears.
+  * Check that timer is paused upon clicking the close game button.
+  * Check that timer resumes at correct time when modal is closed or dismissed. 
 
 2. **Close Quiz Modal**
-    * Check text is clear and readable on multiple device sizes.
-    * Click 'Yes button to check that the user is successfully brought back to the homepage.
-    * Click 'No' button to check that user is successfully brought back to the quiz.
-    * Click the 'X' close button on the modal to check that user is successfully brought back to the quiz.     
+
+  * Check text is clear and readable on multiple device sizes.
+  * Click 'Yes button to check that the user is successfully brought back to the homepage.
+  * Click 'No' button to check that user is successfully brought back to the quiz.
+  * Click the 'X' close button on the modal to check that user is successfully brought back to the quiz.     
 
 3. **Flag**
-    * Check that flag appears successfully for each question.
-    * Check that each flag is unique and there are no repeated flags.
-    * Check that flag is easy to see and stands out against the background. 
-    * Check that flag is 80px max height for small devices.
-    * Check that flag is 120px max height for medium devices.   
-    * Check that flag is 640px max width for large devices.
+
+  * Check that flag appears successfully for each question.
+  * Check that each flag is unique and there are no repeated flags.
+  * Check that flag is easy to see and stands out against the background. 
+  * Check that flag is 80px max height for small devices.
+  * Check that flag is 120px max height for medium devices.   
+  * Check that flag is 640px max width for large devices.
 
 4. **Answer Buttons**
-    * Check buttons are always aligned and arranged in two horizontal pairs. 
-    * Check that for each question there are four unique country names with no repeats. 
-    * Hover over each button to check effect is working.
-    * Click on correct answer to check button changes to green and next question appears after 1 second.
-    * Click on an incorrect answer to check button changes to red and the correct answer changes colour to red and next question appears after 1 second.    
 
-![GIF of testing procedure for easy game on desktop](assets/images/testing.gif "Testing procedure")    
+  * Check buttons are always aligned and arranged in two horizontal pairs. 
+  * Check that for each question there are four unique country names with no repeats. 
+  * Hover over each button to check effect is working.
+  * Click on correct answer to check button changes to green and next question appears after 1 second.
+  * Click on an incorrect answer to check button changes to red and the correct answer changes colour to red and next question appears after 1 second.    
+
+
+
 
     
 ### **Score Page**   
@@ -115,44 +123,48 @@ All steps were taken on Google Chrome, Firefox, Safari and Internet Explorer on 
 5. **User feedback**
 
 ![User Feedback](assets/images/endofgamescreen.png "End of game screenshot")
-    * Check that the correct score is displayed.
-    * Check that the correct question count and correct answer count is displayed. 
-    * Check that no error message is displayed when all questions have been answered correctly or when no questions have been answered.
-    * Check that the  message 'Oh dear...' is displayed to the user when the score is 0. 
-    * Check that the  message 'Not bad...' is displayed to the user when incorrect answers are greater than correct answers.
-    * Check that the  message 'Well done...' is displayed to the user when correct answers are greater than incorrect answers.
-    * Check that the  message 'Outstanding...' is displayed to the user when all answers are correct
-    * Check that error message is displayed when mistakes are made.
-    * Check that show mistakes button is displayed when at least 1 mistake has been made.
-    * Check that the show mistakes button is hidden when the user has a perfect score or failed to answer any questions.
-    * Click on show mistakes button to ensure that the error flags are displayed.
-    * Click on show mistakes button again to ensure that the error flags are hidden. 
-    * Check that the error flags displayed match the mistakes made in the quiz.
-    * Check that the save score button is hidden if the user score is 0. 
+
+
+  * Check that the correct score is displayed.
+  * Check that the correct question count and correct answer count is displayed. 
+  * Check that no error message is displayed when all questions have been answered correctly or when no questions have been answered.
+  * Check that the  message 'Oh dear...' is displayed to the user when the score is 0. 
+  * Check that the  message 'Not bad...' is displayed to the user when incorrect answers are greater than correct answers.
+  * Check that the  message 'Well done...' is displayed to the user when correct answers are greater than incorrect answers.
+  * Check that the  message 'Outstanding...' is displayed to the user when all answers are correct
+  * Check that error message is displayed when mistakes are made.
+  * Check that show mistakes button is displayed when at least 1 mistake has been made.
+  * Check that the show mistakes button is hidden when the user has a perfect score or failed to answer any questions.
+  * Click on show mistakes button to ensure that the error flags are displayed.
+  * Click on show mistakes button again to ensure that the error flags are hidden. 
+  * Check that the error flags displayed match the mistakes made in the quiz.
+  * Check that the save score button is hidden if the user score is 0. 
 
 6. **Buttons**
-    * Hover over 'Save Score' button to check effect is working. 
-    * Check that 'Save Score' button launches the save score modal.
-    * Hover over 'Play Again' button to check effect is working. 
-    * Check that 'Play Again' button takes user back to the homepage after score has been saved.
-    * Check that if the 'Play Again' button is clicked before score has been saved the quit without saving warning modal appears.
+
+  * Hover over 'Save Score' button to check effect is working. 
+  * Check that 'Save Score' button launches the save score modal.
+  * Hover over 'Play Again' button to check effect is working. 
+  * Check that 'Play Again' button takes user back to the homepage after score has been saved.
+  * Check that if the 'Play Again' button is clicked before score has been saved the quit without saving warning modal appears.
 
 7. **Save Score Modal**
-    * Check text is clear and readable on multiple device sizes.
-    * Enter name and click 'Save' button to check that the modal closes, the high score table is displayed showing the user's details are highlighted and the save score button is hidden. 
-    * Click 'Quit' button to check that user is successfully brought back to the score page.
-    * Click the 'X' close button on the modal to check that user is successfully brought back to the score page.
-    * Try to submit a blank user name to check custom Validation is working. 
-    * Try to submit an invalid user name which begins with a '*" to check that custom validation is working.
+
+  * Check text is clear and readable on multiple device sizes.
+  * Enter name and click 'Save' button to check that the modal closes, the high score table is displayed showing the user's details are highlighted and the save score button is hidden. 
+  * Click 'Quit' button to check that user is successfully brought back to the score page.
+  * Click the 'X' close button on the modal to check that user is successfully brought back to the score page.
+  * Try to submit a blank user name to check custom Validation is working. 
+  * Try to submit an invalid user name which begins with a '*" to check that custom validation is working.
     
 ![Invalid User Name Warning](assets/images/invalidusername.png "Invalid username warning") 
 
 8. **High Score Table**
-    * Check that table is displayed once score has been saved and can be read clearly on all relevant device sizes. 
-    * Check that the current user's score is present in the table. 
-    * Check that the current user's score and name is highlighted in the table.
-    * CHeck that table is arranged from highest score to lowest score after each update. 
-    * Click on 'Play Again' button to check that it takes user back to the homepage. 
+  * Check that table is displayed once score has been saved and can be read clearly on all relevant device sizes. 
+  * Check that the current user's score is present in the table. 
+  * Check that the current user's score and name is highlighted in the table.
+  * Check that table is arranged from highest score to lowest score after each update. 
+  * Click on 'Play Again' button to check that it takes user back to the homepage. 
 
 ![High Score Table showing most recent user's score](assets/images/scoretable.png "High Score Table showing most recent user's score")    
 

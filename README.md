@@ -30,7 +30,7 @@ This site will meet these goals because
 
 ## **Wireframes**
 
-[Wireframes](./assets/wireframes.bmpr)
+[Wireframes](assets/wireframes.pdf)
 
 ### **User Story**
 
@@ -47,11 +47,11 @@ As a user who would like to play a flag trivia quiz, I want:
 The overall design of the site is based on a single page , no scrolling layout, with minimum text. Questions, answers and user-feedback are designed and presented as visually as possible with a bare-minimum of typing required(only to enter your name if a user would like to save their score)
 
 * **Font**
-There is only one font used throughout the quiz which is ..... This font was chosen for its visually clarity and ability to stand out on the page especially in its heavier weights. 
+There is only one font used throughout the quiz which is Rubik. This font was chosen for its visually clarity and ability to stand out on the page especially in its heavier weights. 
 
 * **Colours**
 
-The main consideration behind the colour palate of this site is having a primary background colour that does not clash with the flag. Colour is obviously very important in distinguishing flags and a background colour that is close to the white or red end of the spectrum would cause a lot of problems due to the high prevalence of those colours in world flags. As this site is aimed at front-end interactivity the buttons which a user presses needed to be of a significant contrast to the background as a call to action. Considering these factors, the following colour palette was created using the generator in [Colormind](http://colormind.io/bootstrap/)
+The main consideration behind the colour palate of this site is having a primary background colour that does not clash with the flag. Colour is obviously very important in distinguishing flags and a background colour that is close to the white or red end of the spectrum would cause a lot of problems due to the high prevalence of those colours in world flags. As this site is aimed at front-end interactivity the buttons which a user presses needed to be of a significant contrast to the background as a call to action. Considering these factors, the following colour palette was created using the generator in [Colormind](http://colormind.io/bootstrap/). 
 
 ![Site Colour Palette](assets/images/colorscheme.png "Colour scheme used throughout site")
 
@@ -64,15 +64,18 @@ Red and green are used throughout the site for negative and positive feedback (f
 
 ### **Homepage**
 
-![A mock-up of the homepage on different devices](assets/images/homepagescreenshot.png "Mock-up of the homepage")
+![A screenshot of the homepage](assets/images/homepagescreenshot.png "Screenshot of the homepage")
 
 * The homepage has a main title which reads Flag Quiz, a sub-heading asking the user 'How well do you know the flags of the world?' and a final line of text inviting the user to choose a difficulty level.
 * Below the text are three large buttons with the three levels of difficulty, easy, medium and difficult. 
 * Upon clicking on one of the buttons the quiz will start. 
 
-### **Main Quiz Page**  
+### **Main Quiz Page** 
 
-![A screenshot of the quiz in action](assets/images/basicquizscreenshot.png) "Screenshot of the the main quiz page"
+
+![A screenshot of the quiz in action](assets/images/basicquizscreenshot.png "Screenshot of the the main quiz page") 
+
+
 **Header**
 
 * Along the top of the page the question number, score, countdown timer and a close button are evenly spread out. 
@@ -93,12 +96,15 @@ Red and green are used throughout the site for negative and positive feedback (f
 
 ### **Scorepage**
 
+
+![A screenshot of the scorepage with mistake button clicked](assets/images/scorepagescreenshot.png "A screenshot of the scorepage with mistake button clicked")
+
 * The default scorepage shows a message giving the user their total score and how many questions they answered in the 30 second time-limit.
 * If the user scored zero the message will read "Oh dear... you score 0 points.
 * If the user answers more questions wrong than right then the message will read 'Not bad, you scored (X) points".
 * If the user answers more questions right than wrong then the message will read 'Well done, you scored (X) points".
 * If the user answers all questions correct then the message will read 'Outstanding, you scored (X) points".
-* If the user made mistakes, thumbnails of the flags they guessed incorrectly will appear with the correct answers below them. 
+* If the user made mistakes, a show mistakes button will appear below the text, which when clicked will show thumbnails of the flags they guessed incorrectly. 
 * There are two buttons below, one allowing the user to save their score, which when clicked will activate a modal prompting the user to enter their name.
 * After the user has entered their name a table will appear showing the names and scores of all site users and the save score button will be hidden to prevent the user re-saving their score.
 * The second button on the score page is a play again button which if pressed before saving the score, will ask the user if they want to save their score or if they want to go back to the homepage. 
@@ -135,6 +141,9 @@ Red and green are used throughout the site for negative and positive feedback (f
 
 * [Colormind](http://colormind.io/bootstrap/)
     * Used to generate a colour scheme for the site.
+
+* [JSLint](https://www.jslint.com/)   
+    * Used to validate Javascript code.
 
 ## **Testing**
 

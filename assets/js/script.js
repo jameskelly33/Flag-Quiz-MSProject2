@@ -1,22 +1,11 @@
-//--------------Country Names and Codes--------------------- //
-const countryStringEasy =
-  "Japan,Canada,United States,United Kingdom,South Korea,Brazil,France,Germany,Israel,China,Switzerland,Australia,Italy,Sweden,Greece,Finland,Spain,Ireland,Jamaica,South Africa,Turkey,India,Norway,New Zealand,Denmark,Argentina,Mexico,Belgium,Poland,Russia,Saudi Arabia,Portugal,Iceland,Croatia,Cyprus,Nepal,Netherlands,North Korea,Ukraine,Nigeria,Kenya,Georgia,Albania,Iraq,Czechia,Austria,Chile,Slovakia,Uruguay,North Macedonia,Estonia,Lebanon,Egypt,Vietnam,Romania,Pakistan,Qatar,Cuba,Vatican City,Iran,Sri Lanka,Slovenia,Bangladesh,Malaysia,Latvia,Colombia";
-const countryStringMedium =
-  "Panama,Serbia,Morocco,Hungary,Venezuela,Barbados,Thailand,Algeria,Côte d’Ivoire,Syria,Kosovo,Bhutan,Malta,Indonesia,Cambodia,Bosnia and Herzegovina,Fiji,Belarus,Peru,Bulgaria,Honduras,Angola,Tunisia,Ecuador,Monaco,Bahrain,Seychelles,Afghanistan,Singapore,Uganda,Ghana,Trinidad and Tobago,Luxembourg,Liberia,Montenegro,Kazakhstan,Mongolia,Dominican Republic,Philippines,Andorra,Cameroon,Armenia,Bahamas,Somalia,United Arab Emirates,Laos,Moldova,eSwatini,Costa Rica,San Marino,Paraguay,Zimbabwe,Liechtenstein,Papua New Guinea,Jordan,Taiwan,Kuwait,Saint Lucia,Chad,Botswana,Turkmenistan,Ethiopia,Niger,Senegal,Brunei,Lithuania";
-const countryStringHard =
-  "Azerbaijan,Haiti,Tonga,Yemen,Libya,Guatemala,Uzbekistan,Central African Republic,Micronesia,Nicaragua,Togo,El Salvador,Oman,Zambia,Palestine,Lesotho,Kiribati,Palau,Dominica,Mozambique,Kyrgyzstan,Marshall Islands,Sudan,Maldives,Antigua and Barbuda,Belize,Tuvalu,South Sudan,Burundi,Grenada,Madagascar,DR Congo,Myanmar,Malawi,Saint Vincent and the Grenadines,Cape Verde,Guyana,Samoa,Tanzania,Burkina Faso,Bolivia,Mali,Benin,Mauritania,Djibouti,Tajikistan,Sierra Leone,Suriname,Timor-Leste,Gabon,Comoros,Mauritius,Eritrea,Nauru,Rwanda,Vanuatu,Saint Kitts and Nevis,Namibia,Gambia,São Tomé and Príncipe,Republic of the Congo,Guinea,Equatorial Guinea,Solomon Islands,Guinea-Bissau";
-const easyArray = countryStringEasy.split(",");
-const mediumArray = countryStringMedium.split(",");
-const hardArray = countryStringHard.split(",");
 let flagSize;
 const mobileScreen = 350;
 const mediumScreen = 700;
 const largeScreen = 1200;
 const gameDuration = 30;
-let intViewportWidth = window.innerWidth;
-
 let seconds;
 let intervaliId;
+let intViewportWidth
 let timeRemaining;
 function startTimer(seconds) {
   intervalId = setInterval(countDown, 1000);
@@ -246,6 +235,7 @@ function addName() {
     user = { name: uniqueID, score: score };
     let userString = JSON.stringify(user);
     let combinedStrings = joinTwoStrings(highScoreString, userString);
+    //Code taken from an answer to this [stackoverflow post](https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value).//
     let jsonStr = combinedStrings.replace(
       /(\w+:)|(\w+ :)/g,
       function (matchedStr) {
@@ -299,6 +289,7 @@ function pauseQuiz() {
 function resumeQuiz() {
   startTimer(timeRemaining);
 }
+//Compare function taken from an answer to this [stackoverflow post](https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value).//
 function compare(b, a) {
   if (a.score < b.score) {
     return -1;

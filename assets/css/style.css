@@ -1,120 +1,159 @@
 :root {
-    --primary-background: #ECF4EF;
+    --primary-background: #ecf4ef;
     --secondary-background: #e26c43;
-    --button-background:#F5B653;
-    --incorrect-color:red;
-    --correct-color:green;
-    --font-color:#2A3338;
+    --button-background: #f5b653;
+    --incorrect-color: red;
+    --correct-color: green;
+    --font-color: #2a3338;
   }
-html body{
-    font-family: 'Rubik', sans-serif;
+  html,
+  body {
+    font-family: "Rubik", sans-serif;
     color: var(--font-color);
     width: 100%;
     height: 100%;
-    background-color: var(--primary-background); 
-}
-.main-title{
-    color:var(--font-color);
+    background-color: var(--primary-background);
+  }
+  .hidden {
+    display: none;
+  }
+  /* Homepage */
+  .main-title {
+    color: var(--font-color);
     letter-spacing: 1px;
     font-weight: bold;
     margin-top: 5vh;
     margin-bottom: 5vh;
     font-size: 42px;
-}
-.sub-title{
-    color:var(--font-color);
+  }
+  .sub-title {
+    color: var(--font-color);
     letter-spacing: 1px;
     font-weight: bold;
     margin-bottom: 5vh;
     font-size: 28px;
     font-style: italic;
-}
-.btn-title{
-    color:var(--font-color);
+  }
+  .btn-title {
+    color: var(--font-color);
     letter-spacing: 1px;
-    font-weight: bold;;
-}
-.hidden{
-    display:none;
-}
-.difficulty-buttons{
-    background-color:var(--button-background);
-    border-color:var(--button-background);
-    width:66vw;
+    font-weight: bold;
+  }
+  .difficulty-buttons {
+    background-color: var(--button-background);
+    border-color: var(--button-background);
+    width: 66vw;
     height: 15vh;
     font-size: 20px;
-    margin:20px;
+    margin: 20px;
     color: var(--font-color);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.difficulty-buttons:hover{
+  }
+  .difficulty-buttons:hover {
     background-color: var(--secondary-background);
     border-color: var(--secondary-background);
-}
-#nav-bar{
+  }
+  /* Quiz */
+  #nav-bar {
     background-color: var(--primary-background);
     height: 5vh;
-}
-.flag-container{
+  }
+  #score-heading {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  #question-total {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .flag-container {
     margin-top: 10vh;
     margin-bottom: 10vh;
-}
-#flag{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}
-.modal-content{
-    background-color: var(--primary-background);
-}
-.modal-header{
-    background-color: var(--secondary-background);
-}
-.modal-title{
+  }
+  #flag {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .answer-button {
+    background-color: var(--button-background);
+    border-color: var(--button-background);
     color: var(--font-color);
-}
-.modal-body p{
-    color:var(--font-color);
-    font-size: 1.5em;
-}
-.modal-footer .secondary-button a{
-    background-color: var(--secondary-background);
-    border-color: var(--secondary-background);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}
-.modal-footer a:hover{
-    background-color: var(--button-background);
-    border-color: var(--button-background); 
-}
-.modal-footer .btn-primary{
-    background-color: var(--secondary-background);
-    border-color: var(--secondary-background);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}
-.modal-footer .btn-primary:hover{
-    background-color: var(--secondary-background);
-    border-color: var(--secondary-background);
-    background-color: var(--button-background);
-    border-color: var(--button-background); 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}
-.answer-button{
-    background-color: var(--button-background);
-    border-color:var(--button-background);
-    color: var(--font-color);
-    width:35vw;
-    height:15vh;
-    margin:10px;
+    width: 35vw;
+    height: 15vh;
+    margin: 10px;
     font-size: 0.8rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}
-
-
-.answer-button:focus{
- border-color: var(--button-background);
- color: var(--font-color);
-}
-
-
-.flashing {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .answer-button:focus {
+    border-color: var(--button-background);
+    color: var(--font-color);
+  }
+  /* Modals */
+  .modal-content {
+    background-color: var(--primary-background);
+  }
+  .modal-header {
+    background-color: var(--secondary-background);
+  }
+  .modal-title {
+    color: var(--font-color);
+  }
+  .modal-body p {
+    color: var(--font-color);
+    font-size: 1.5em;
+  }
+  .modal-footer .secondary-button a {
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .modal-footer a:hover {
+    background-color: var(--button-background);
+    border-color: var(--button-background);
+  }
+  .modal-footer .btn-primary {
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .modal-footer .btn-primary:hover {
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+    background-color: var(--button-background);
+    border-color: var(--button-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  /* Scorepage */
+  .scorepage-buttons {
+    margin: 50px;
+    background-color: var(--button-background);
+    border-color: var(--button-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: var(--font-color);
+  }
+  .scorepage-buttons:hover {
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+  }
+  .scorepage-buttons:focus {
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+  }
+  .scorepage-buttons:active {
+    background-color: var(--secondary-background);
+    border-color: var(--secondary-background);
+  }
+  .figure-caption {
+    color: var(--font-color);
+  }
+  .figure {
+    margin-top: 50px;
+  }
+  #scoreboard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  /* Timer and score animations */
+  .flashing {
     animation: blinker 1.5s linear infinite;
   }
   @keyframes blinker {
@@ -122,96 +161,65 @@ html body{
       opacity: 0;
     }
   }
-.flash-once{
-    animation: flash 1.5s linear  1;}
-    @keyframes flash {
-        50% {
-          opacity: 50%;
-        }
-        from{
-            color: var(--font-color);
-        }
-        to{
-            color:green;
-        }
-    }  
-#score-heading{
-    margin-top: 50px;
-    margin-bottom: 20px;
-}
-#question-total{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.scorepage-buttons{
-    margin: 50px;
-    background-color: var(--button-background);
-    border-color: var(--button-background);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    color:var(--font-color);
-}
-.scorepage-buttons:hover{
-    background-color: var(--secondary-background);
-    border-color: var(--secondary-background);
-}
-.scorepage-buttons:focus{
-    background-color: var(--secondary-background);
-    border-color: var(--secondary-background);
-}
-.scorepage-buttons:active{
-    background-color: var(--secondary-background);
-    border-color: var(--secondary-background);
-}
-.figure-caption{
-    color:var(--font-color)
-}
-.figure{
-    margin-top: 50px;
-}
-#scoreboard{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-@media  screen and (min-width :350px) {
-    .button-container{
-        margin-top: 50px;
+  .flash-once {
+    animation: flash 1.5s linear 1;
+  }
+  @keyframes flash {
+    50% {
+      opacity: 50%;
     }
-    .answer-button-container{
-        margin-top :20px
+    from {
+      color: var(--font-color);
     }
-     
-}
-@media  screen and (min-width :768px) {
-     .main-title{
-        font-size: 72px;
+    to {
+      color: green;
     }
-    .sub-title{
-        font-size: 42px;
+  }
+  /* Media Queries */
+  @media screen and (min-width: 350px) {
+    .button-container {
+      margin-top: 50px;
     }
-    .btn-title{
-        margin-top: 10vh;
+    .answer-button-container {
+      margin-top: 20px;
     }
-    .difficulty-buttons{
-        width: 25vw;
-        font-size: 28px;
+  }
+  @media screen and (min-width: 768px) {
+    .main-title {
+      font-size: 72px;
     }
-
-    .button-container{
-        margin-top: 15vh;
+    .sub-title {
+      font-size: 42px;
     }
-    #nav-bar{
-        font-size: 1.5rem;
+    .btn-title {
+      margin-top: 10vh;
     }
-    .answer-button{
-        font-size: 3vh;
-        width: 40vw;
+    .difficulty-buttons {
+      width: 25vw;
+      font-size: 28px;
     }
-    .answer-button-container{
-        margin-top:10vh;
+  
+    .button-container {
+      margin-top: 15vh;
     }
-
-    #flag{
-        max-height: 240px;
+    #nav-bar {
+      font-size: 1.5rem;
     }
-   
-
-}                         
+    .answer-button {
+      font-size: 3vh;
+      width: 40vw;
+    }
+    .answer-button-container {
+      margin-top: 10vh;
+    }
+  
+    #flag {
+      max-height: 240px;
+    }
+  }
+  @media screen and (min-width: 1500px) {
+    #flag {
+      max-height: 320px;
+    }
+  }
+  

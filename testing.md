@@ -135,8 +135,8 @@ All steps were taken on Google Chrome, Firefox, Safari and Internet Explorer on 
   * Check that error message is displayed when mistakes are made.
   * Check that show mistakes button is displayed when at least 1 mistake has been made.
   * Check that the show mistakes button is hidden when the user has a perfect score or failed to answer any questions.
-  * Click on show mistakes button to ensure that the error flags are displayed.
-  * Click on show mistakes button again to ensure that the error flags are hidden. 
+  * Click on show mistakes button to ensure that the error flags are displayed and button text changes to 'hide mistakes'.'
+  * Click on show mistakes button again to ensure that the error flags are hidden and button text changes to 'show mistakes. 
   * Check that the error flags displayed match the mistakes made in the quiz.
   * Check that the save score button is hidden if the user score is 0. 
 

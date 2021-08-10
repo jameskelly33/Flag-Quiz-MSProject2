@@ -2,7 +2,7 @@ let flagSize;
 const mobileScreen = 350;
 const mediumScreen = 700;
 const largeScreen = 1200;
-const gameDuration = 30;
+const gameDuration = 2;
 let seconds;
 let intervaliId;
 let intViewportWidth
@@ -17,8 +17,7 @@ function startTimer(seconds) {
     } else if (seconds === 10) {
       document.getElementById("timer").style.color = "red";
       document.getElementById("timer").classList.add("flashing");
-      {
-        seconds = seconds -= 1;
+      { seconds = seconds -= 1;
       }
     } else {
       seconds = seconds -= 1;
@@ -190,11 +189,14 @@ function finishGame() {
     showMistakes();
   }
 }
-const mistakeGalleryHeadings = document.getElementById("mistakes")
+const mistakeGalleryHeadings = document.getElementById("mistakes");
 const mistakeGallery = document.getElementById("mistake-gallery");
+const showMistakesButton = document.getElementById('show-mistakes-btn')
 
 function showMistakes() {
-  document.getElementById("mistake-count").innerText=`You made ${incorrectCount} mistakes.`
+  if(incorrectCount ===1){document.getElementById("mistake-count").innerText=`You made 1 mistake.`}
+  else{
+  document.getElementById("mistake-count").innerText=`You made ${incorrectCount} mistakes.`}
   for (mistake of incorrectAnswerArray) {
     let errorFlagFigure = document.createElement("figure");
     errorFlagFigure.setAttribute("class", "figure collapse");
@@ -212,9 +214,17 @@ function showMistakes() {
     flagCaption.appendChild(captionText);
     errorFlagFigure.appendChild(errorFlag);
     errorFlag.parentNode.insertBefore(flagCaption, errorFlag.nextSibling);
+    
   }
   mistakeGalleryHeadings.classList.remove("hidden");
   mistakeGallery.classList.remove("hidden");
+}
+showMistakesButton.addEventListener('click',toggleMistakes)
+function toggleMistakes(){
+ if (showMistakesButton.innerText==='Hide Mistakes'){
+   showMistakesButton.innerText='Show Mistakes'
+ }else {showMistakesButton.innerText='Hide Mistakes'
+}
 }
 let userName;
 let uniqueID;

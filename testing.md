@@ -27,7 +27,7 @@ As a user of this site, I want:
 2. Clear and easy to understand feedback.
     * The user receives instant feedback for each question by a green background on the correct answer and a red background on the selected incorrect answer.
     * The user also sees the score instantly update and flash green every time they get an answer correct.
-    * Once the quiz has been completed the users score is prominently displayed along with any errors they have made.
+    * Once the quiz has been completed the user's score is prominently displayed along with any errors they have made.
 
 3. The option to play a quiz that is suited to my knowledge level.
     * The user has the chance to choose from three levels, easy, medium and difficult and does not have to play them in any order and is free to choose between them.
@@ -42,7 +42,7 @@ As a user of this site, I want:
 
 ### **Browser Compatibility**
 
-The Website was tested on Google Chrome , Internet Explorer, Microsoft Edge and Safari browsers.
+The Website was tested on Google Chrome , Internet Explorer, Microsoft Edge, Safari, and firefox browsers.
 
 ### **Devices**
 
@@ -114,10 +114,7 @@ All steps were taken on Google Chrome, Firefox, Safari and Internet Explorer on 
   * Click on correct answer to check button changes to green and next question appears after 1 second.
   * Click on an incorrect answer to check button changes to red and the correct answer changes colour to red and next question appears after 1 second.    
 
-
-
-
-    
+ 
 ### **Score Page**   
 
 5. **User feedback**
@@ -197,7 +194,7 @@ This code led to no duplicate correct answers or options but did occasionally le
 
 ![Screenshot of undefined answer slot](assets/images/undefinedanswererror.png "Screenshot of undefined answer slot")
 
-The issue was caused by the fact that function needed to loop four times in order to fill the answer array, but if one of the random countries generated had previuosly been selected it would not be added to the question array which prevented duplicates but it did leave one of the four options undefined.
+The issue was caused by the fact that function needed to loop four times in order to fill the answer array, but if one of the random countries generated had previously been selected it would not be added to the question array, which although preventing duplicates it did leave one of the four options undefined.
 In order to solve this issue I simply added an else statement to the above code which in the case of the random country begin already chosen would remove 1 from the loop count to ensure that the question array always had four unique countries and never displayed an undefined option. 
 
 ``` javascript 
@@ -216,7 +213,7 @@ for (let optionCount = 0; optionCount < numberOfOptions; optionCount++) {
 ```
 3. **Issues with saving scores in local storage.**
 
-As one of the main goals of this site is to help users improve their knowledge of flags over tie, the ability to save your score and compare it the past scores was important. For the scope of this project in the frontend interactive module saving scores in a database was not an option however the option of saving user scores in local storage in the browser appeared to be a neat solution.
+As one of the main goals of this site is to help users improve their knowledge of flags over time, the ability to save your score and compare it the past scores was important. For the scope of this project in the frontend interactive module saving scores in a database was not an option, however the option of saving user scores in local storage in the browser appeared to be a neat solution.
 One of the main issues I ran into when implementing this functionality was the fact that local storage stores all data as a string which meant that I would have to access the locally stored string, convert it into an object, add the new score and sort it to display to the user and then convert it back into a string to save it again in local storage. 
 The original code for this process can be seen below. 
 ``` javascript
@@ -233,6 +230,8 @@ There were two fundamental issues with this code that had to be resolved.
 The first bug was that a user was not able to save multiple scores under the same name, as each time they tried to save a score with the same name it would overwrite an older save during the sorting step. 
  
 The solution to this came by creating an unique ID variable by adding an asterisk to the username value and then sorting by score and removing the asterisk before re-saving it to local storage. Thus allowing multiple entries under the same name as shown by the screenshot below.
+
+![Screenshot of table with multiple entries with the same name](assets/images/scoretable.png "Screenshot of table with multiple entries with the same name")
 
 The second bug proved more difficult to solve in that the data being saved needed to stored and retrieved as an object array in the following format, 
  ```javascript
@@ -289,9 +288,9 @@ errorFlag.parentNode.insertBefore(flagCaption, errorFlag.nextSibling);
 
 5. **Custom Validation** 
 
-The site uses a Bootstrap Modal to allow a user to save their score. This save-score-modal has one text input that captures the username and upon clicking the save button the user's score would be saved and the modal would close. One issue that arose was dealing with an empty input value. Giving the input a required attribute did not resolve the issue as the modal would close on submission automatically even if the input was not a valid one due to the data-bs-dismiss attribute of the modal. Removing this attribute would allow the standard HTML validation to work however the user would have to manually close the modal after saving a valid name.
+The site uses a Bootstrap Modal to allow a user to save their score. This save-score-modal has one text input that captures the username and upon clicking the save button the user's score would be saved and the modal would close. One issue that arose was dealing with an empty input value. Giving the input a required attribute did not resolve the issue as the modal would close on submission automatically even if the input was not a valid one due to the data-bs-dismiss attribute of the modal. Removing the data-bs-dismiss attribute would allow the standard HTML validation to work however the user would have to manually close the modal after saving a valid name, which was undesirable.
 
-The solution was to use Bootstrap custom validation adding the classes '-is-invalid' to an empty input field and then creating a JS function validateName to manually do the validation.
+The solution was to use Bootstrap custom validation adding the classes '-is-invalid' to an empty input field and then creating a JS function validateName to manually do the validation and close the modal when a valid input is entered. 
 ```javascript
 var myModal = new bootstrap.Modal(document.getElementById('save-score-modal'))
 function hideModal(){

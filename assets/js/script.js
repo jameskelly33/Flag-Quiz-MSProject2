@@ -2,7 +2,7 @@ let flagSize;
 const mobileScreen = 350;
 const mediumScreen = 700;
 const largeScreen = 1200;
-const gameDuration = 2;
+const gameDuration = 29;
 let seconds;
 let intervaliId;
 let intViewportWidth

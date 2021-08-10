@@ -17,14 +17,14 @@ The central audience for this site is people who would like to test their knowle
 
 ### **Site user goals**
 
-Users to this site would like to test their knowledge of world flags in a quick, fun and interactive way as well as see their results and find out which flags they don't know whether they are a beginner or more advanced in terms of their prior flag knowledge. 
+Users to this site would like to test their knowledge of world flags in a quick, fun and interactive way, as well as see their results and find out which flags they don't know whether they are a beginner or more advanced in terms of their prior flag knowledge. 
 This site will meet these goals because
 
 *   The site will be fully interactive and click based, not requiring any typing or spelling.
 *   The quiz is available in three difficulty levels to suit different levels of prior knowledge.
-*   Quizzes are randomised meaning that no one 30second will ever be in the same order or with the same multiple choice in order to encourage users to replay and improve their skills.
+*   Quizzes are randomised, meaning that no one 30-second will ever be in the same order or with the same multiple choice in order to encourage users to replay and improve their skills.
 *   Quizzes will be timed at 30 seconds maximum meaning users do not have to make any long time commitments. 
-*   A users will be able to save and track their score and compare it to other users. 
+*   A users will be able to save and track their scores and compare it to other users on the same device. 
 *   Visual feedback will be given to help users learn from their mistakes. 
 
 
@@ -44,7 +44,7 @@ As a user who would like to play a flag trivia quiz, I want:
 
 **Design Choices**
 
-The overall design of the site is based on a single page , no scrolling layout, with minimum text. Questions, answers and user-feedback are designed and presented as visually as possible with a bare-minimum of typing required(only to enter your name if a user would like to save their score)
+The overall design of the site is based on a single page , no scrolling layout, with minimum text. Questions, answers and user-feedback are designed and presented as visually as possible with a bare-minimum of typing required(only to enter your name if a user would like to save their score).
 
 * **Font**
 There is only one font used throughout the quiz which is Rubik. This font was chosen for its visually clarity and ability to stand out on the page especially in its heavier weights. 
@@ -100,14 +100,14 @@ Red and green are used throughout the site for negative and positive feedback (f
 ![A screenshot of the scorepage with mistake button clicked](assets/images/scorepagescreenshot.png "A screenshot of the scorepage with mistake button clicked")
 
 * The default scorepage shows a message giving the user their total score and how many questions they answered in the 30 second time-limit.
-* If the user scored zero the message will read "Oh dear... you score 0 points.
+* If the user scored zero the message will read "Oh dear... you scored 0 points".
 * If the user answers more questions wrong than right then the message will read 'Not bad, you scored (X) points".
 * If the user answers more questions right than wrong then the message will read 'Well done, you scored (X) points".
 * If the user answers all questions correct then the message will read 'Outstanding, you scored (X) points".
 * If the user made mistakes, a show mistakes button will appear below the text, which when clicked will show thumbnails of the flags they guessed incorrectly. 
-* There are two buttons below, one allowing the user to save their score, which when clicked will activate a modal prompting the user to enter their name.
-* After the user has entered their name a table will appear showing the names and scores of all site users and the save score button will be hidden to prevent the user re-saving their score.
-* The second button on the score page is a play again button which if pressed before saving the score, will ask the user if they want to save their score or if they want to go back to the homepage. 
+* There are q further two buttons, one allowing the user to save their score, which when clicked will activate a modal prompting the user to enter their name.
+* After the user has entered their name a table will appear showing the names and scores of all site users and the save score button will be hidden to prevent the user  re-saving their score.
+* The second button on the scorepage is a play again button which if pressed before saving the score, will ask the user if they want to save their score or if they want to go back to the homepage. 
 
 ## **Technologies Used**
 
@@ -145,6 +145,9 @@ Red and green are used throughout the site for negative and positive feedback (f
 * [JSLint](https://www.jslint.com/)   
     * Used to validate Javascript code.
 
+* [Prettier](https://prettier.io/)    
+    * Used to format HTML,CSS and Javascript code.
+
 ## **Testing**
 
 Testing information can be found in this [separate file](testing.md). 
@@ -156,7 +159,7 @@ This site was developed using VS Code and live server and committed and pushed t
 To deploy this page to GitHub Pages the following steps should be taken.
 
 1. Log in to GitHub
-2. Select the Milestone-Project-2 repository
+2. Select the Flag-Quiz-MSProject-2 repository
 3. Click on Settings
 4. Select the Pages tab on the left sidebar.
 5. In the Source settings click on the dropdown menu that is currently displaying None.
@@ -170,14 +173,14 @@ To run this site locally the following steps should be taken.
 To run this site locally the following steps should be taken.
 Download Gitpod extension in chrome
 Log into Gitpod
-Go to the Github projects and select the milestone-project-1 repository.
+Go to the Github projects and select the Flag-Quiz-MSProject-2 repository.
 There should be a green Gitpod button on the top right next to the Code button
 Click the green Gitpod button
 A Gitpod workspace will load allowing the user to work locally.
 
 ### Run in an alternate IDE
 
-Go to GitHub projects and select the milestone-project-1 repository.
+Go to GitHub projects and select the Flag-Quiz-MSProject-2 repository.
 Above the list of files click the Code button.
 In the Clone with HTTPs section, copy the clone URL for the repository.
 In your local IDE open the terminal.
@@ -201,9 +204,9 @@ let jsonStr = combinedStrings.replace(/(\w+:)|(\w+ :)/g, function(matchedStr) {
 
 ### Content
 
-* This site relies heavily on Flagpedia API in order to display the flags during and after the quiz programmatically. 
+* This site relies heavily on [Flagpedia API](https://flagpedia.net/) in order to display the flags during and after the quiz programmatically. 
 
-* The difficulty levels and resulting scoring system were adapted from these [statistics] from Sporcle's Flag quiz showing how often flags were guessed correctly by players. 
+* The difficulty levels and resulting scoring system were adapted from these [statistics](https://www.sporcle.com/games/g/worldflags/results) from Sporcle's Flag quiz showing how often flags were guessed correctly by players. 
 
 ### Acknowledgements 
 
